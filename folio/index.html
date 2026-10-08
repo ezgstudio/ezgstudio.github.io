@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folio — Catalog everything you collect</title>
+<meta name="description" content="Folio is the beautiful way to catalog everything you collect — records, books, cards, figures, sneakers, and the nights out you never want to forget. Track value, build wishlists, and theme your whole shelf.">
+<link rel="canonical" href="https://ezgstudio.github.io/folio/">
+
+<!-- Social / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Folio — Catalog everything you collect">
+<meta property="og:description" content="The beautiful way to catalog everything you collect. Track value, build wishlists, and theme your whole shelf across six hand-crafted looks.">
+<meta property="og:image" content="https://ezgstudio.github.io/folio/assets/social.webp">
+<meta property="og:url" content="https://ezgstudio.github.io/folio/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#efe8d8;          /* warm paper */
+    --bg-deep:#e7ddc8;
+    --card:#fffdf7;        /* card surface */
+    --ink:#1f1a14;         /* primary text */
+    --mid:#4e4539;         /* secondary text */
+    --mute:#8f8575;        /* muted labels */
+    --line:#e3d6b6;        /* hairlines/borders */
+    --rust:#b5432f;        /* signature accent */
+    --rust-deep:#95331f;
+    --radius:18px;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Jost","Helvetica Neue",Arial,sans-serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif; font-weight:600; line-height:1.08; letter-spacing:-.01em; margin:0;}
+  a{color:inherit;}
+  img{max-width:100%; height:auto; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .eyebrow{font-size:13px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--rust);}
+  .serif-i{font-style:italic;}
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(239,232,216,.82); backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(227,214,182,.6);
+  }
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:66px;}
+  .brand{display:flex; align-items:center; gap:11px; font-family:"Fraunces",serif; font-weight:600; font-size:22px; text-decoration:none;}
+  .brand img{width:34px; height:34px; border-radius:9px;}
+  .nav-links{display:flex; align-items:center; gap:30px;}
+  .nav-links a{font-size:15px; text-decoration:none; color:var(--mid); transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    font-family:"Jost",sans-serif; font-size:14px; font-weight:500;
+    background:var(--ink); color:var(--bg); padding:9px 16px; border-radius:100px;
+    text-decoration:none; white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--rust);}
+  @media(max-width:720px){ .nav-links a:not(.nav-cta){display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 40px; position:relative;}
+  .hero-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
+  .hero h1{font-size:clamp(44px,6.2vw,74px); margin:18px 0 0;}
+  .hero p.lede{font-size:19px; color:var(--mid); max-width:30em; margin:20px 0 0;}
+  .cta-row{display:flex; align-items:center; gap:18px; margin-top:32px; flex-wrap:wrap;}
+  .store-badge{
+    display:inline-flex; align-items:center; gap:11px; text-decoration:none;
+    background:var(--ink); color:var(--bg); padding:12px 20px; border-radius:14px;
+    transition:transform .15s, background .15s;
+  }
+  .store-badge:hover{transform:translateY(-2px); background:var(--rust-deep);}
+  .store-badge svg{width:26px; height:26px; fill:currentColor;}
+  .store-badge .st{display:flex; flex-direction:column; line-height:1.15;}
+  .store-badge .st small{font-size:10px; letter-spacing:.08em; text-transform:uppercase; opacity:.8;}
+  .store-badge .st b{font-size:17px; font-weight:600; font-family:"Jost",sans-serif;}
+  .notify{font-size:14.5px; color:var(--mid); text-decoration:none; border-bottom:1px solid var(--line);}
+  .notify:hover{color:var(--rust); border-color:var(--rust);}
+  .micro{margin-top:18px; font-size:13.5px; color:var(--mute); letter-spacing:.01em;}
+
+  /* phones */
+  .phones{position:relative; height:540px;}
+  .phone{
+    position:absolute; border-radius:34px; overflow:hidden;
+    background:#000; border:6px solid #15120d;
+    box-shadow:0 30px 60px -18px rgba(47,37,22,.45), 0 8px 20px -8px rgba(47,37,22,.3);
+  }
+  .phone img{border-radius:28px;}
+  .phone.back{width:234px; right:16px; top:0; transform:rotate(5deg);}
+  .phone.front{width:252px; left:6px; top:60px; transform:rotate(-4deg); z-index:2;}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr; gap:10px;}
+    .phones{height:500px; margin-top:10px;}
+    .phone.back{right:50%; margin-right:-170px;}
+    .phone.front{left:50%; margin-left:-150px;}
+  }
+  @media(max-width:460px){
+    .phones{height:430px; transform:scale(.85); transform-origin:top center;}
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:72px 0;}
+  .sec-head{max-width:640px; margin:0 auto 46px; text-align:center;}
+  .sec-head h2{font-size:clamp(30px,4.2vw,44px); margin-top:12px;}
+  .sec-head p{color:var(--mid); font-size:18px; margin:14px 0 0;}
+
+  /* feature grid */
+  .features{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .feat{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:28px 26px;
+        box-shadow:0 1px 2px rgba(47,37,22,.04), 0 10px 26px -18px rgba(47,37,22,.2);}
+  .feat .ico{font-size:26px; line-height:1; margin-bottom:14px;}
+  .feat h3{font-size:21px;}
+  .feat p{font-size:15.5px; color:var(--mid); margin:9px 0 0;}
+  @media(max-width:860px){ .features{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .features{grid-template-columns:1fr;} }
+
+  /* themes section */
+  .themes{background:var(--bg-deep);}
+  .themes-in{display:grid; grid-template-columns:0.9fr 1.1fr; gap:52px; align-items:center;}
+  .video-phone{
+    width:270px; margin:0 auto; border-radius:40px; overflow:hidden;
+    background:#000; border:7px solid #15120d;
+    box-shadow:0 34px 70px -20px rgba(47,37,22,.5);
+  }
+  .video-phone video{width:100%; display:block; border-radius:33px;}
+  .theme-list{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .theme-chip{display:flex; align-items:center; gap:14px; background:var(--card);
+    border:1px solid var(--line); border-radius:15px; padding:14px 16px;}
+  .theme-chip img{width:46px; height:46px; border-radius:11px; flex:none;}
+  .theme-chip .tc-name{font-family:"Fraunces",serif; font-weight:600; font-size:17px; display:flex; align-items:center; gap:8px;}
+  .theme-chip .tier{font-family:"Jost",sans-serif; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase;
+    padding:2px 7px; border-radius:100px; border:1px solid var(--line); color:var(--mute);}
+  .theme-chip .tier.pro{background:var(--ink); color:var(--bg); border-color:var(--ink);}
+  .theme-chip .tc-sub{font-size:12.5px; color:var(--mute);}
+  @media(max-width:860px){ .themes-in{grid-template-columns:1fr; gap:36px;} .theme-list{max-width:520px; margin:0 auto;} }
+  @media(max-width:480px){ .theme-list{grid-template-columns:1fr;} }
+
+  /* gallery */
+  .gallery{display:flex; gap:22px; overflow-x:auto; padding:8px 24px 28px;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;}
+  .gallery::-webkit-scrollbar{height:8px;}
+  .gallery::-webkit-scrollbar-thumb{background:var(--line); border-radius:100px;}
+  .gshot{flex:0 0 auto; width:250px; scroll-snap-align:center; border-radius:20px; overflow:hidden;}
+  .gshot img{width:100%;}
+
+  /* pro */
+  .pro{background:var(--ink); color:#f3ecdd;}
+  .pro .sec-head h2{color:#fff;}
+  .pro .sec-head p{color:#c9bda8;}
+  .pro-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; max-width:900px; margin:0 auto;}
+  .pro-item{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:15px; padding:22px 20px;}
+  .pro-item .ico{font-size:22px; margin-bottom:10px;}
+  .pro-item h3{font-size:17px; color:#fff;}
+  .pro-item p{font-size:14px; color:#c3b7a3; margin:7px 0 0;}
+  .pro-note{text-align:center; margin:38px auto 0; max-width:40em; color:#c9bda8; font-size:15px;}
+  .pro-note b{color:#fff;}
+  @media(max-width:860px){ .pro-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:460px){ .pro-grid{grid-template-columns:1fr;} }
+
+  /* final cta */
+  .final{text-align:center;}
+  .final h2{font-size:clamp(30px,4.6vw,48px); max-width:14em; margin:0 auto;}
+  .final .cta-row{justify-content:center;}
+
+  /* footer */
+  footer{background:var(--bg-deep); border-top:1px solid var(--line); padding:54px 0 40px;}
+  .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:30px;}
+  .foot-brand .brand{margin-bottom:12px;}
+  .foot-brand p{font-size:14px; color:var(--mute); max-width:24em;}
+  .foot-col h4{font-family:"Jost",sans-serif; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin:0 0 14px;}
+  .foot-col a{display:block; font-size:15px; color:var(--mid); text-decoration:none; margin-bottom:10px;}
+  .foot-col a:hover{color:var(--rust);}
+  .foot-bottom{margin-top:42px; padding-top:22px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:13px; color:var(--mute);}
+  @media(max-width:760px){ .foot-grid{grid-template-columns:1fr 1fr;} .foot-brand{grid-column:1/-1;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="/folio/">
+      <img src="assets/icon.webp" alt="Folio app icon" width="34" height="34">
+      Folio
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#themes">Themes</a>
+      <a href="#pro">Folio Pro</a>
+      <!-- Swap href to the App Store URL at launch -->
+      <a class="nav-cta" href="#get">Get Folio</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Your shelf, catalogued</span>
+      <h1>Catalog everything <span class="serif-i">you collect</span>.</h1>
+      <p class="lede">Records, books, cards, figures, sneakers — and the concerts and films
+        you never want to forget. Folio turns your collection into a catalog you'll
+        actually enjoy opening.</p>
+      <div class="cta-row" id="get">
+        <!-- At launch, change href="#get" to your App Store URL and remove the "coming soon" copy -->
+        <a class="store-badge" href="#get" aria-label="Coming soon to the App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.64zM14.77 5.6c.64-.78 1.07-1.85.95-2.93-.92.04-2.03.61-2.69 1.38-.59.69-1.11 1.79-.97 2.84 1.02.08 2.07-.52 2.71-1.29z"/></svg>
+          <span class="st"><small>Coming soon to the</small><b>App Store</b></span>
+        </a>
+        <a class="notify" href="mailto:ezgforge@gmail.com?subject=Notify%20me%20about%20Folio">Get notified at launch →</a>
+      </div>
+      <p class="micro">No ads. No tracking. No selling your data — just a great home for the things you love.</p>
+    </div>
+    <div class="phones">
+      <div class="phone back"><img src="assets/hero-grid.webp" alt="Folio collection grid showing vinyl records" loading="eager" width="921" height="2000"></div>
+      <div class="phone front"><img src="assets/hero-dashboard.webp" alt="Folio dashboard showing your shelf of collections" loading="eager" width="921" height="2000"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FEATURES ============ -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Made for collectors</span>
+      <h2>Your collection deserves better than a spreadsheet</h2>
+      <p>Everything you need to catalog, value, and show off the things you love — objects you own and experiences you've had.</p>
+    </div>
+    <div class="features">
+      <div class="feat">
+        <div class="ico">🗂️</div>
+        <h3>Catalog anything</h3>
+        <p>Build collections for anything. Add items in seconds — scan a barcode, search built-in image libraries, or snap your own photo, with covers and details auto-filled.</p>
+      </div>
+      <div class="feat">
+        <div class="ico">💰</div>
+        <h3>Track what matters</h3>
+        <p>Log condition, variant, purchase price, and current value. See totals and estimated value across every collection at a glance.</p>
+      </div>
+      <div class="feat">
+        <div class="ico">⭐</div>
+        <h3>Build your wishlist</h3>
+        <p>Keep tabs on what you're still hunting for, and get a nudge when you're just one item away from completing a set.</p>
+      </div>
+      <div class="feat">
+        <div class="ico">🎟️</div>
+        <h3>Never forget a night out</h3>
+        <p>Save the concerts, plays, films, and games you've been to — or plan to attend — and get reminded before the date.</p>
+      </div>
+      <div class="feat">
+        <div class="ico">📱</div>
+        <h3>Your shelf, everywhere</h3>
+        <p>A home-screen widget keeps your collection close, and everything syncs securely to your account across devices.</p>
+      </div>
+      <div class="feat">
+        <div class="ico">📤</div>
+        <h3>Your data is yours</h3>
+        <p>Export your whole catalog to PDF, CSV, or JSON anytime. No lock-in, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THEMES ============ -->
+<section id="themes" class="themes">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Six expressions</span>
+      <h2>Make it yours</h2>
+      <p>One app, six hand-crafted themes. Each one reshapes everything — type, color, cards, photo treatment, even the app icon.</p>
+    </div>
+    <div class="themes-in">
+      <div class="video-phone">
+        <video src="assets/folio-preview.mp4" autoplay muted loop playsinline poster="assets/hero-dashboard.webp" aria-label="Folio shifting through its six themes"></video>
+      </div>
+      <div class="theme-list">
+        <div class="theme-chip">
+          <img src="assets/theme-illustrative.webp" alt="Illustrative theme icon">
+          <div><div class="tc-name">Illustrative <span class="tier">Free</span></div><div class="tc-sub">A collector's notebook</div></div>
+        </div>
+        <div class="theme-chip">
+          <img src="assets/theme-cartoon.webp" alt="Cartoon Sticker theme icon">
+          <div><div class="tc-name">Cartoon <span class="tier">Free</span></div><div class="tc-sub">Chunky die-cut stickers</div></div>
+        </div>
+        <div class="theme-chip">
+          <img src="assets/theme-brutalist.webp" alt="Brutalist theme icon">
+          <div><div class="tc-name">Brutalist <span class="tier">Free</span></div><div class="tc-sub">Raw structure, type shouts</div></div>
+        </div>
+        <div class="theme-chip">
+          <img src="assets/theme-glass.webp" alt="Glassmorphism theme icon">
+          <div><div class="tc-name">Glass <span class="tier pro">Pro</span></div><div class="tc-sub">Frosted depth</div></div>
+        </div>
+        <div class="theme-chip">
+          <img src="assets/theme-neu.webp" alt="Neumorphism theme icon">
+          <div><div class="tc-name">Neumorphism <span class="tier pro">Pro</span></div><div class="tc-sub">Extruded from one material</div></div>
+        </div>
+        <div class="theme-chip">
+          <img src="assets/theme-riso.webp" alt="Risograph theme icon">
+          <div><div class="tc-name">Risograph <span class="tier pro">Pro</span></div><div class="tc-sub">Two-colour print</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section style="padding-bottom:40px;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">A closer look</span>
+      <h2>Beautiful by design</h2>
+    </div>
+  </div>
+  <div class="gallery">
+    <div class="gshot"><img src="assets/shot-catalog.webp" alt="Catalog everything you collect — the Folio dashboard" loading="lazy" width="924" height="2000"></div>
+    <div class="gshot"><img src="assets/shot-collections.webp" alt="Beautifully organized collections of vinyl records" loading="lazy" width="924" height="2000"></div>
+    <div class="gshot"><img src="assets/shot-worth.webp" alt="Know what it's worth — item detail with value" loading="lazy" width="924" height="2000"></div>
+    <div class="gshot"><img src="assets/shot-vault.webp" alt="Your whole vault at a glance — portfolio stats" loading="lazy" width="924" height="2000"></div>
+    <div class="gshot"><img src="assets/shot-themes.webp" alt="Make it yours — themes and colors" loading="lazy" width="924" height="2000"></div>
+    <div class="gshot"><img src="assets/shot-nights.webp" alt="Never forget a night out — experiences collection" loading="lazy" width="924" height="2000"></div>
+  </div>
+</section>
+
+<!-- ============ PRO ============ -->
+<section id="pro" class="pro">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:#e0a48f;">Folio Pro</span>
+      <h2>Unlock the full experience</h2>
+      <p>Start free with room for several collections, then upgrade whenever you're ready.</p>
+    </div>
+    <div class="pro-grid">
+      <div class="pro-item"><div class="ico">♾️</div><h3>Unlimited</h3><p>Unlimited collections and items — no caps.</p></div>
+      <div class="pro-item"><div class="ico">🎨</div><h3>Every theme</h3><p>All six premium themes and extra accent colors.</p></div>
+      <div class="pro-item"><div class="ico">✂️</div><h3>Background removal</h3><p>One-tap clean product shots for every item.</p></div>
+      <div class="pro-item"><div class="ico">🖼️</div><h3>Multi-photo &amp; search</h3><p>Multiple photos per item and built-in image search.</p></div>
+    </div>
+    <p class="pro-note">Free forever includes <b>up to 4 collections</b> and <b>25 items each</b> — plenty of room to start building your shelf.</p>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="wrap">
+    <span class="eyebrow">Your shelf, catalogued</span>
+    <h2 style="margin-top:14px;">Make your collection as good as it feels</h2>
+    <div class="cta-row">
+      <a class="store-badge" href="#get" aria-label="Coming soon to the App Store">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.64zM14.77 5.6c.64-.78 1.07-1.85.95-2.93-.92.04-2.03.61-2.69 1.38-.59.69-1.11 1.79-.97 2.84 1.02.08 2.07-.52 2.71-1.29z"/></svg>
+        <span class="st"><small>Coming soon to the</small><b>App Store</b></span>
+      </a>
+      <a class="notify" href="mailto:ezgforge@gmail.com?subject=Notify%20me%20about%20Folio">Get notified at launch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/folio/"><img src="assets/icon.webp" alt="Folio app icon" width="34" height="34">Folio</a>
+        <p>A universal collection tracker for iOS. Built by EZG Studio LLC, a small independent studio.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#themes">Themes</a>
+        <a href="#pro">Folio Pro</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <a href="mailto:ezgforge@gmail.com">ezgforge@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 EZG Studio LLC. All rights reserved.</span>
+      <span>Made for people who collect.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
