@@ -187,6 +187,11 @@
   .foot-bottom{margin-top:42px; padding-top:22px; border-top:1px solid var(--line);
     display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:13px; color:var(--mute);}
   @media(max-width:760px){ .foot-grid{grid-template-columns:1fr 1fr;} .foot-brand{grid-column:1/-1;} }
+  .nav-links a.to-studio{display:inline-flex; align-items:center; gap:6px; color:var(--mute); font-size:13.5px; padding-right:18px; border-right:1px solid var(--line);}
+  .nav-links a.to-studio:hover{color:var(--ink);}
+  .ezg-back{display:inline-flex; align-items:center; gap:9px; margin-top:18px; font-size:13.5px; color:var(--mid); border:none;}
+  .ezg-back:hover{color:var(--rust);}
+  .ezg-back svg{width:22px; height:22px;}
 </style>
 </head>
 <body>
@@ -198,6 +203,7 @@
       Folio
     </a>
     <div class="nav-links">
+      <a href="/" class="to-studio">EZG Studio ↗</a>
       <a href="#features">Features</a>
       <a href="#themes">Themes</a>
       <a href="#pro">Folio Pro</a>
@@ -376,6 +382,10 @@
       <div class="foot-brand">
         <a class="brand" href="/folio/"><img src="assets/icon.webp" alt="Folio app icon" width="34" height="34">Folio</a>
         <p>A universal collection tracker for iOS. Built by EZG Studio LLC, a small independent studio.</p>
+        <a class="ezg-back" href="/">
+          <svg viewBox="0 0 38 38" aria-hidden="true"><rect x="2" y="7" width="30" height="6" rx="3" fill="#1A1B18"/><rect x="8" y="16" width="28" height="6" rx="3" fill="#B58A2B"/><rect x="2" y="25" width="23" height="6" rx="3" fill="#1A1B18"/></svg>
+          Part of EZG Studio
+        </a>
       </div>
       <div class="foot-col">
         <h4>Product</h4>
