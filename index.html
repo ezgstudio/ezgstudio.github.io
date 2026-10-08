@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EZG Studio — software &amp; fabrication</title>
+<meta name="description" content="EZG Studio LLC — a technology and design studio working at the intersection of software and fabrication. Native iOS and macOS apps, laser-cut and 3D-printed objects, and digital design assets.">
+<link rel="canonical" href="https://ezgstudio.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="EZG Studio — software & fabrication">
+<meta property="og:description" content="A technology and design studio working at the intersection of software and fabrication.">
+<meta property="og:url" content="https://ezgstudio.github.io/">
+
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --graphite:#1A1B18;
+    --paper:#F4F2EE;
+    --paper-2:#E7E4DD;
+    --paper-3:#EDEAE3;
+    --gold:#B58A2B;
+    --gold-dark:#D6A63A;
+    --muted:#8E8D89;
+    --line:rgba(26,27,24,.12);
+    --line-soft:rgba(26,27,24,.08);
+    --ink-60:rgba(26,27,24,.6);
+    --ink-45:rgba(26,27,24,.45);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--paper); color:var(--graphite);
+    font-family:"Schibsted Grotesk",system-ui,-apple-system,sans-serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  h1,h2,h3{margin:0; letter-spacing:-.025em; line-height:1.03; font-weight:500;}
+  a{color:inherit; text-decoration:none;}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 40px;}
+  .eyebrow{font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:400; letter-spacing:.2em; text-transform:uppercase; color:var(--gold);}
+  svg{display:block;}
+
+  /* ---------- Nav ---------- */
+  nav{position:sticky; top:0; z-index:50; background:rgba(244,242,238,.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:70px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand .mk{width:30px; height:30px;}
+  .brand .wm{font-size:17px; font-weight:600; letter-spacing:-.01em;}
+  .brand .wm .s{font-weight:400; color:var(--ink-45);}
+  .nav-links{display:flex; align-items:center; gap:34px; font-size:14px; color:var(--ink-60);}
+  .nav-links a:hover{color:var(--graphite);}
+  .nav-cta{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; padding:9px 18px; border:1px solid var(--graphite); color:var(--graphite);}
+  .nav-cta:hover{background:var(--graphite); color:var(--paper);}
+  @media(max-width:720px){ .nav-links a:not(.nav-cta){display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative; border-bottom:1px solid var(--line); overflow:hidden;}
+  .hero-pattern{position:absolute; inset:0; opacity:.5; pointer-events:none;}
+  .hero-in{position:relative; display:grid; grid-template-columns:1fr 420px; gap:64px; padding:104px 0 92px;}
+  .hero h1{font-size:clamp(44px,6.6vw,88px); letter-spacing:-.038em; text-wrap:balance;}
+  .hero .lede{display:flex; flex-direction:column; justify-content:flex-end; gap:24px;}
+  .hero .lede p{margin:0;}
+  .hero .lede .p1{font-size:18px; line-height:1.62; color:rgba(26,27,24,.72); text-wrap:pretty;}
+  .hero .lede .p2{font-size:15px; line-height:1.6; color:var(--ink-45);}
+  .hero .eyebrow{display:block; margin-bottom:30px;}
+  @media(max-width:860px){ .hero-in{grid-template-columns:1fr; gap:36px; padding:72px 0 64px;} }
+
+  /* ---------- Disciplines ---------- */
+  .disc{display:grid; grid-template-columns:repeat(3,1fr); border-bottom:1px solid var(--line);}
+  .disc > div{padding:40px 40px; border-right:1px solid var(--line);}
+  .disc > div:last-child{border-right:none;}
+  .disc .n{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-45);}
+  .disc .t{font-size:16px; line-height:1.5; margin-top:12px; max-width:30ch;}
+  @media(max-width:760px){ .disc{grid-template-columns:1fr;} .disc > div{border-right:none; border-bottom:1px solid var(--line); padding:28px 40px;} .disc > div:last-child{border-bottom:none;} }
+
+  /* ---------- Index of work ---------- */
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; padding:74px 0 24px;}
+  .section-head h2{font-family:"JetBrains Mono",monospace; font-size:13px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;}
+  .section-head .meta{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-45);}
+
+  .index{padding-bottom:30px;}
+  .idx-row{display:grid; grid-template-columns:60px 1fr 220px 150px 130px; gap:24px; align-items:center; padding:26px 0; border-bottom:1px solid var(--line);}
+  .idx-head{padding:12px 0; border-bottom:1.5px solid var(--graphite); font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-45);}
+  .idx-head .r{text-align:right;}
+  .idx-row .no{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-45);}
+  .idx-row .title{font-size:30px; letter-spacing:-.02em; font-weight:500; display:flex; align-items:center; gap:12px;}
+  .idx-row .title .dot{width:7px; height:7px; border-radius:50%; background:var(--gold); flex:none;}
+  .idx-row .dsc,.idx-row .out{font-size:14.5px; color:var(--ink-60);}
+  .idx-row .st{text-align:right; font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-45);}
+  a.idx-row{transition:background .15s, padding .15s;}
+  a.idx-row:hover{background:var(--paper-3);}
+  a.idx-row:hover .title{color:var(--gold);}
+  a.idx-row .st .go{color:var(--gold);}
+  @media(max-width:860px){
+    .idx-head{display:none;}
+    .idx-row{grid-template-columns:1fr auto; gap:6px 16px; padding:20px 0;}
+    .idx-row .no{display:none;}
+    .idx-row .title{grid-column:1; grid-row:1; font-size:24px;}
+    .idx-row .st{grid-column:2; grid-row:1;}
+    .idx-row .dsc{grid-column:1/-1; grid-row:2;}
+    .idx-row .out{display:none;}
+  }
+
+  /* ---------- Objects / Assets teaser ---------- */
+  .teaser{border-top:1px solid var(--line); padding:70px 0 20px;}
+  .teaser-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .tcard{border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--paper-3);}
+  .tcard .fill{height:200px; position:relative;}
+  .tcard .cap{display:flex; justify-content:space-between; align-items:baseline; padding:16px 20px; font-size:14.5px;}
+  .tcard .cap .k{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-45);}
+  @media(max-width:760px){ .teaser-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Studio statement ---------- */
+  .studio{background:var(--graphite); color:var(--paper); margin-top:76px;}
+  .studio-in{display:grid; grid-template-columns:1fr 1fr; gap:0;}
+  .studio-copy{padding:92px 56px;}
+  .studio-copy .eyebrow{color:var(--gold-dark); display:block; margin-bottom:26px;}
+  .studio-copy p{margin:0; font-size:29px; line-height:1.36; letter-spacing:-.02em; text-wrap:pretty; font-weight:500;}
+  .studio-pattern{position:relative; min-height:360px; background:#15160f;}
+  @media(max-width:860px){ .studio-in{grid-template-columns:1fr;} .studio-copy{padding:60px 40px;} .studio-pattern{min-height:220px;} }
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--graphite); color:var(--paper); border-top:1px solid rgba(244,242,238,.14);}
+  .foot-in{display:flex; align-items:flex-start; justify-content:space-between; gap:60px; padding:56px 0 24px;}
+  .foot-cols{display:flex; gap:66px;}
+  .foot-col{display:flex; flex-direction:column; gap:10px; font-size:14px; color:rgba(244,242,238,.62);}
+  .foot-col .h{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(244,242,238,.35);}
+  .foot-col a:hover{color:var(--gold-dark);}
+  .foot-bottom{padding:0 0 42px; font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(244,242,238,.3);}
+  @media(max-width:720px){ .foot-in{flex-direction:column; gap:40px;} .foot-cols{flex-wrap:wrap; gap:36px;} }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="/">
+      <svg class="mk" viewBox="0 0 38 38" aria-hidden="true"><rect x="2" y="7" width="30" height="6" rx="3" fill="#1A1B18"/><rect x="8" y="16" width="28" height="6" rx="3" fill="#B58A2B"/><rect x="2" y="25" width="23" height="6" rx="3" fill="#1A1B18"/></svg>
+      <span class="wm">EZG <span class="s">Studio</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#studio">Studio</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="mailto:ezgforge@gmail.com">Enquire</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <svg class="hero-pattern" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMaxYMid slice">
+    <defs><pattern id="strata" width="140" height="42" patternUnits="userSpaceOnUse">
+      <rect x="6" y="4" width="98" height="8" rx="4" fill="rgba(26,27,24,.05)"/>
+      <rect x="112" y="4" width="46" height="8" rx="4" fill="rgba(26,27,24,.05)"/>
+      <rect x="26" y="17" width="120" height="8" rx="4" fill="rgba(181,138,43,.14)"/>
+      <rect x="-8" y="17" width="26" height="8" rx="4" fill="rgba(181,138,43,.14)"/>
+      <rect x="6" y="30" width="70" height="8" rx="4" fill="rgba(26,27,24,.05)"/>
+      <rect x="84" y="30" width="34" height="8" rx="4" fill="rgba(26,27,24,.05)"/>
+    </pattern></defs>
+    <rect width="100%" height="100%" fill="url(#strata)"/>
+  </svg>
+  <div class="wrap hero-in">
+    <div>
+      <span class="eyebrow">Technology &amp; design studio</span>
+      <h1>Working at the intersection of software and fabrication.</h1>
+    </div>
+    <div class="lede">
+      <p class="p1">EZG Studio develops native iOS and macOS applications, designs and produces physical goods through laser cutting and 3D printing, and creates digital design assets for other designers and makers.</p>
+      <p class="p2">The through-line is a design-first approach — careful attention to how a thing is actually used.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ===== DISCIPLINES ===== -->
+<section class="disc">
+  <div>
+    <div class="n">01 — Software</div>
+    <div class="t">Native iOS and macOS applications, from concept through release.</div>
+  </div>
+  <div>
+    <div class="n">02 — Fabrication</div>
+    <div class="t">Laser-cut and 3D-printed objects, designed and produced in house.</div>
+  </div>
+  <div>
+    <div class="n">03 — Assets</div>
+    <div class="t">Design systems, icon sets and templates for designers and makers.</div>
+  </div>
+</section>
+
+<!-- ===== INDEX OF WORK ===== -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Index of work</h2>
+      <span class="meta">04 entries · software</span>
+    </div>
+    <div class="index">
+      <div class="idx-row idx-head">
+        <span>No.</span><span>Title</span><span>Discipline</span><span>Platform</span><span class="r">Status</span>
+      </div>
+
+      <a class="idx-row" href="/folio-legal/">
+        <span class="no">01</span>
+        <span class="title"><span class="dot"></span>Folio</span>
+        <span class="dsc">Collection tracker</span>
+        <span class="out">iOS</span>
+        <span class="st"><span class="go">Preview →</span></span>
+      </a>
+
+      <div class="idx-row">
+        <span class="no">02</span>
+        <span class="title">DraftBase</span>
+        <span class="dsc">Software</span>
+        <span class="out">macOS</span>
+        <span class="st">In development</span>
+      </div>
+
+      <div class="idx-row">
+        <span class="no">03</span>
+        <span class="title">Situ</span>
+        <span class="dsc">Software</span>
+        <span class="out">iOS</span>
+        <span class="st">In development</span>
+      </div>
+
+      <div class="idx-row">
+        <span class="no">04</span>
+        <span class="title">Fora</span>
+        <span class="dsc">Software</span>
+        <span class="out">iOS</span>
+        <span class="st">In development</span>
+      </div>
+    </div>
+
+    <!-- ===== OBJECTS / ASSETS TEASER ===== -->
+    <div class="teaser">
+      <div class="section-head" style="padding-top:0;">
+        <h2>Objects &amp; assets</h2>
+        <span class="meta">In production · 2026</span>
+      </div>
+      <div class="teaser-grid">
+        <div class="tcard">
+          <div class="fill"><svg width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="contour" width="100" height="100" patternUnits="userSpaceOnUse"><g fill="none" stroke="rgba(26,27,24,.22)" stroke-width="2"><rect x="6" y="6" width="88" height="88" rx="22"/><rect x="18" y="18" width="64" height="64" rx="16"/><rect x="30" y="30" width="40" height="40" rx="10"/></g><rect x="42" y="42" width="16" height="16" rx="4" fill="#B58A2B"/></pattern></defs><rect width="100%" height="100%" fill="url(#contour)"/></svg></div>
+          <div class="cap"><span>Laser-cut objects</span><span class="k">Birch · Acrylic</span></div>
+        </div>
+        <div class="tcard">
+          <div class="fill" style="background:#1A1B18;"><svg width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="3.2" fill="#D6A63A" opacity=".55"/></pattern></defs><rect width="100%" height="100%" fill="url(#dots)"/></svg></div>
+          <div class="cap"><span>3D-printed fixtures</span><span class="k">PETG · PLA</span></div>
+        </div>
+        <div class="tcard">
+          <div class="fill"><svg width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="kerf" width="26" height="26" patternUnits="userSpaceOnUse"><rect x="11" y="3" width="4" height="20" rx="2" fill="rgba(26,27,24,.18)"/></pattern><pattern id="kerfg" width="156" height="26" patternUnits="userSpaceOnUse"><rect x="63" y="3" width="4" height="20" rx="2" fill="#B58A2B"/></pattern></defs><rect width="100%" height="100%" fill="url(#kerf)"/><rect width="100%" height="100%" fill="url(#kerfg)"/></svg></div>
+          <div class="cap"><span>Design templates</span><span class="k">Digital</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STUDIO ===== -->
+<section id="studio" class="studio">
+  <div class="studio-in">
+    <div class="studio-copy">
+      <span class="eyebrow">Studio</span>
+      <p>Design and production under one roof. Software gets prototyped like an object; objects get versioned like software.</p>
+    </div>
+    <div class="studio-pattern">
+      <svg width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <pattern id="dots2" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="3.4" fill="#D6A63A"/></pattern>
+          <linearGradient id="drift" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".55" stop-color="#fff" stop-opacity=".3"/><stop offset="1" stop-color="#fff" stop-opacity=".06"/></linearGradient>
+          <mask id="driftm"><rect width="100%" height="100%" fill="url(#drift)"/></mask>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots2)" mask="url(#driftm)"/>
+        <g opacity=".92">
+          <rect x="0" y="44%" width="46%" height="10" rx="5" fill="rgba(244,242,238,.14)"/>
+          <rect x="9%" y="50%" width="52%" height="10" rx="5" fill="#B58A2B"/>
+          <rect x="0" y="56%" width="34%" height="10" rx="5" fill="rgba(244,242,238,.14)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="contact">
+  <div class="wrap foot-in">
+    <a class="brand" href="/" style="color:var(--paper);">
+      <svg class="mk" viewBox="0 0 38 38" aria-hidden="true"><rect x="2" y="7" width="30" height="6" rx="3" fill="#F4F2EE"/><rect x="8" y="16" width="28" height="6" rx="3" fill="#D6A63A"/><rect x="2" y="25" width="23" height="6" rx="3" fill="#F4F2EE"/></svg>
+      <span class="wm" style="color:var(--paper);">EZG <span class="s" style="color:rgba(244,242,238,.5);">Studio</span></span>
+    </a>
+    <div class="foot-cols">
+      <div class="foot-col">
+        <span class="h">Work</span>
+        <a href="/folio-legal/">Folio</a>
+        <a href="#work">DraftBase</a>
+        <a href="#work">Situ &amp; Fora</a>
+      </div>
+      <div class="foot-col">
+        <span class="h">Studio</span>
+        <a href="#studio">About</a>
+        <a href="#work">Objects</a>
+      </div>
+      <div class="foot-col">
+        <span class="h">Contact</span>
+        <a href="mailto:ezgforge@gmail.com">ezgforge@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">© 2026 EZG Studio LLC</div>
+</footer>
+
+</body>
+</html>
