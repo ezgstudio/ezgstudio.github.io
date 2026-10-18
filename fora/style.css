@@ -1,5 +1,6 @@
 /* Fora — legal page styles, matched to the Fora app landing page (/fora/).
-   Shares the Situ colour palette; the dot motif is an offset diamond lattice. */
+   Theme: First Light (default). Signature motif: a topographic contour field
+   with an accent-tinted halo (assets/topo.svg). */
 :root{
   --bg:#F4F2EE; --surface:#FFFFFF; --surf2:#EDEAE3;
   --text:#111318; --mute:rgba(17,19,24,.60); --faint:rgba(17,19,24,.34);
@@ -45,15 +46,13 @@ main{max-width:var(--maxw); margin:0 auto; padding:58px 24px 84px;}
 
 header{position:relative; overflow:hidden; border-bottom:1px solid var(--hair);
   padding:10px 0 30px; margin-bottom:36px;}
-header::before{content:""; position:absolute; inset:-30px -40px 0 -40px; z-index:0; pointer-events:none;
-  background-image:
-    radial-gradient(60% 120% at 90% -10%, color-mix(in srgb,var(--accent) 22%, transparent), transparent 70%),
-    radial-gradient(circle at center, color-mix(in srgb,var(--text) 8%, transparent) 1.2px, transparent 1.5px),
-    radial-gradient(circle at center, color-mix(in srgb,var(--text) 8%, transparent) 1.2px, transparent 1.5px);
-  background-size:auto, 24px 24px, 24px 24px;
-  background-position:0 0, 0 0, 12px 12px;
-  -webkit-mask-image:linear-gradient(to bottom, #000 30%, transparent);
-  mask-image:linear-gradient(to bottom, #000 30%, transparent);}
+header::before{content:""; position:absolute; inset:-40px -60px 0 -60px; z-index:0; pointer-events:none;
+  background:url(assets/topo.svg) right -40px top -120px / 1100px auto no-repeat; opacity:.13;
+  -webkit-mask-image:linear-gradient(to bottom, #000 35%, transparent);
+  mask-image:linear-gradient(to bottom, #000 35%, transparent);}
+header::after{content:""; position:absolute; inset:-30px -60px 0 -60px; z-index:0; pointer-events:none;
+  background:radial-gradient(55% 130% at 92% -10%, color-mix(in srgb,var(--accent) 22%, transparent), transparent 70%);}
+@media (prefers-color-scheme:dark){ header::before{opacity:.17;} }
 header>*{position:relative; z-index:1;}
 .eyebrow{font-family:var(--mono); font-size:11.5px; font-weight:500;
   letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;}

@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;700&family=Playfair+Display:wght@600;700&family=Archivo+Narrow:wght@600&family=Questrial&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F4F2EE; --surface:#FFFFFF; --surf2:#EDEAE3;
@@ -59,17 +59,17 @@ nav{position:sticky; top:0; z-index:60; background:var(--glass);
 
 /* ---------- Hero ---------- */
 .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--hair);}
-/* Fora motif: an offset diamond dot lattice (two grids, one shifted) — a
-   relative of Situ's square grid, not the same pattern. */
+/* Fora signature motif: a topographic contour field (assets/topo.svg) with an
+   accent-tinted halo radiating from the wordmark corner. */
 .halo{position:absolute; inset:0; z-index:0; pointer-events:none;
-  background-image:
-    radial-gradient(52% 46% at 68% 8%, color-mix(in srgb,var(--accent) 26%, transparent), transparent 72%),
-    radial-gradient(circle at center, color-mix(in srgb,var(--text) 8%, transparent) 1.2px, transparent 1.5px),
-    radial-gradient(circle at center, color-mix(in srgb,var(--text) 8%, transparent) 1.2px, transparent 1.5px);
-  background-size:auto, 24px 24px, 24px 24px;
-  background-position:0 0, 0 0, 12px 12px;
+  background:url(assets/topo.svg) right -40px top -60px / 1200px auto no-repeat; opacity:.13;
   -webkit-mask-image:linear-gradient(to bottom, #000 62%, transparent);
   mask-image:linear-gradient(to bottom, #000 62%, transparent);}
+.glow{position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(48% 42% at 70% 6%, color-mix(in srgb,var(--accent) 26%, transparent), transparent 72%);
+  -webkit-mask-image:linear-gradient(to bottom, #000 62%, transparent);
+  mask-image:linear-gradient(to bottom, #000 62%, transparent);}
+@media (prefers-color-scheme:dark){ .halo{opacity:.17;} }
 .hero-in{position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:48px;
   align-items:center; padding:74px 0 84px;}
 .badge{display:inline-flex; align-items:center; gap:9px; font-family:var(--mono);
@@ -95,14 +95,13 @@ h1 .dot{color:var(--accent);}
 .device{width:274px; max-width:80vw; border-radius:40px; padding:11px;
   background:color-mix(in srgb,var(--text) 90%, var(--bg)); box-shadow:0 30px 70px -30px rgba(0,0,0,.5);}
 .screen{border-radius:30px; overflow:hidden; background:var(--surface); border:1px solid var(--hair);}
-.shot{position:relative; height:224px; overflow:hidden;
-  background-image:
-    radial-gradient(70% 90% at 30% 10%, color-mix(in srgb,var(--accent) 34%, transparent), transparent 70%),
-    radial-gradient(circle at center, color-mix(in srgb,var(--text) 12%, transparent) 1.2px, transparent 1.5px),
-    radial-gradient(circle at center, color-mix(in srgb,var(--text) 12%, transparent) 1.2px, transparent 1.5px);
-  background-size:auto, 20px 20px, 20px 20px; background-position:0 0, 0 0, 10px 10px;
-  background-color:var(--surf2);}
-.route{position:absolute; inset:0; width:100%; height:100%;}
+.shot{position:relative; height:224px; overflow:hidden; background:var(--surf2);}
+.shot::before{content:""; position:absolute; inset:0;
+  background:url(assets/topo.svg) center / 340px auto no-repeat; opacity:.2;}
+.shot::after{content:""; position:absolute; inset:0;
+  background:radial-gradient(70% 90% at 30% 10%, color-mix(in srgb,var(--accent) 30%, transparent), transparent 70%);}
+.route{position:absolute; inset:0; width:100%; height:100%; z-index:1;}
+.shot .pin,.shot .glasspill{z-index:2;}
 .pin{position:absolute; width:40px; height:40px; border-radius:50%; background:var(--surface);
   border:1px solid var(--line); display:grid; place-items:center; color:var(--accent);
   box-shadow:0 8px 18px -8px rgba(0,0,0,.45);}
@@ -164,6 +163,9 @@ section{padding:84px 0;}
   padding:16px 12px; text-align:center;}
 .cat svg{width:24px; height:24px; color:var(--accent); margin:0 auto 9px;}
 .cat .l{font-size:13px; font-weight:500;}
+.catsub{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--faint); text-align:center; margin:0 0 16px;}
+.catsub.gap{margin-top:40px;}
 
 /* ---------- Privacy band ---------- */
 .privacy{background:var(--text); color:var(--bg);}
@@ -214,7 +216,7 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
     <a class="brand mark" href="/fora/">fora<span class="dot">.</span></a>
     <div class="nav-links">
       <a href="#features" class="hide-sm">Features</a>
-      <a href="#drives" class="hide-sm">Drives</a>
+      <a href="#themes" class="hide-sm">Themes</a>
       <a href="#privacy" class="hide-sm">Privacy</a>
       <a href="/" class="hide-sm">EZG Studio</a>
       <a class="nav-cta" href="#get">Coming soon</a>
@@ -224,15 +226,16 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
 
 <header class="hero">
   <div class="halo"></div>
+  <div class="glow"></div>
   <div class="wrap">
     <div class="hero-in">
       <div class="hero-copy">
         <span class="badge"><span class="d"></span>iOS · Scenic drives &amp; third places</span>
         <h1>Take the<br>long way<span class="dot">.</span></h1>
-        <p class="lede">Fora finds the drives worth the detour and the third places worth lingering in — the cafés, bookshops, parks, and bars where a place actually happens.</p>
+        <p class="lede">Fora finds the drives worth the detour and the third places worth seeking out — the cafés, bookshops, farm stands, and record shops where a place actually happens.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#get">Coming to the App Store</a>
-          <a class="btn btn-ghost" href="#features">See how it works</a>
+          <a class="btn btn-ghost" href="#themes">Explore the themes</a>
         </div>
         <div class="hero-note">No account · No ads · No tracking · Location stays on your device</div>
       </div>
@@ -243,10 +246,10 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
             <div class="shot">
               <svg class="route" viewBox="0 0 252 224" fill="none" aria-hidden="true"><path d="M24 210 C 70 176, 36 136, 92 120 C 150 104, 150 92, 168 40" style="stroke:var(--accent)" stroke-width="3" stroke-linecap="round" stroke-dasharray="1.5 9"/></svg>
               <div class="pin" style="top:150px; left:40px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h11v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M16 9h2.3a2 2 0 0 1 0 4H16"/><path d="M8 3.6c-.4.8.4 1.2 0 2M11.5 3.6c-.4.8.4 1.2 0 2"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h11v4a5 5 0 0 1-10 0z"/><path d="M16 8h2.3a2 2 0 0 1 0 4H16"/><path d="M4 20h13"/></svg>
               </div>
               <div class="pin sel" style="top:34px; left:150px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-9 4 6 2-3 6 6z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h3l.6 2.2M17 7h-3l-.6 2.2"/><circle cx="7" cy="14" r="3.4"/><circle cx="17" cy="14" r="3.4"/><path d="M10.4 13h3.2"/></svg>
               </div>
               <div class="glasspill"><span class="d"></span>3 stops on this drive</div>
             </div>
@@ -286,7 +289,7 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
       <div class="feat">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h11v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M16 9h2.3a2 2 0 0 1 0 4H16"/><path d="M8 3.6c-.4.8.4 1.2 0 2M11.5 3.6c-.4.8.4 1.2 0 2"/></svg></div>
         <h3>Third places</h3>
-        <p>The spots between home and work: cafés, bookshops, parks, bars, and diners worth settling into for an afternoon.</p>
+        <p>The spots between home and work: cafés, bookshops, farm stands, record shops, and diners worth settling into for an afternoon.</p>
       </div>
       <div class="feat">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.6-6-10a6 6 0 0 1 12 0c0 4.4-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg></div>
@@ -312,69 +315,114 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
   </div>
 </section>
 
-<section id="drives" class="themes">
+<section id="themes" class="themes">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Every kind of long way</span>
-      <h2>Pick a mood, not a destination.</h2>
-      <p>Drives are grouped by the kind of landscape you're after — so you can chase a coastline on Saturday and a forest switchback next week.</p>
+      <span class="eyebrow">Seven times of day</span>
+      <h2>One app, seven ways to see it.</h2>
+      <p>Each theme is a complete typographic and chromatic world — a time of day, a kind of weather, a new face and palette for the whole app. Three are free; four unlock with Fora Pro.</p>
     </div>
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c3-3 6 3 9 0s6-3 9 0"/><path d="M3 14c3-3 6 3 9 0s6-3 9 0"/></svg></div>
-        <h3>Coastal</h3>
-        <p>Cliff roads and sea-level causeways with the water always in frame.</p>
+    <div class="theme-grid">
+
+      <div class="theme wide" style="background:#F4F2EE; color:#111318;">
+        <div class="theme-top"><span class="theme-nm" style="font-family:var(--sans); font-weight:800; letter-spacing:-.02em;">First Light</span><span class="tier free">Free · Default</span></div>
+        <div class="theme-spec" style="font-family:var(--sans); font-weight:700; letter-spacing:-.02em; color:#111318;">The long way is the point<span style="color:#D9531E;">.</span></div>
+        <div class="theme-vibe" style="color:#111318;">Warm · Clean · First of Day</div>
+        <div class="theme-sw"><span style="background:#FFFFFF;"></span><span style="background:#EDEAE3;"></span><span style="background:#111318;"></span><span style="background:#D9531E;"></span></div>
       </div>
-      <div class="feat">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l6-10 4 6 2-3 6 7z"/></svg></div>
-        <h3>Mountain</h3>
-        <p>Switchbacks, passes, and overlooks that earn the altitude.</p>
+
+      <div class="theme" style="background:#EBF0F7; color:#1E3A5F;">
+        <div class="theme-top"><span class="theme-nm" style="font-family:'Archivo Narrow','Avenir Next Condensed',sans-serif; font-weight:600;">Saltwater</span><span class="tier free">Free</span></div>
+        <div class="theme-spec" style="font-family:'Archivo Narrow','Avenir Next Condensed',sans-serif; font-weight:600; color:#1E3A5F;">The long way is the point<span style="color:#2563EB;">.</span></div>
+        <div class="theme-vibe" style="font-family:'Courier New',monospace; color:#1E3A5F;">Cool · Coastal · Fog</div>
+        <div class="theme-sw"><span style="background:#F4F7FB;"></span><span style="background:#D4E0EE;"></span><span style="background:#1E3A5F;"></span><span style="background:#2563EB;"></span></div>
       </div>
-      <div class="feat">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21c0-4 6-5 6-9S9 7 9 3"/></svg></div>
-        <h3>Backroads</h3>
-        <p>Two-lane detours through small towns and nobody's hurry.</p>
+
+      <div class="theme" style="background:#EDE3D2; color:#3B2A1A;">
+        <div class="theme-top"><span class="theme-nm" style="font-family:'Poppins','Futura',sans-serif; font-weight:700;">Canopy</span><span class="tier free">Free</span></div>
+        <div class="theme-spec" style="font-family:'Poppins','Futura',sans-serif; font-weight:700; color:#3B2A1A;">The long way is the point<span style="color:#5E7326;">.</span></div>
+        <div class="theme-vibe" style="color:#3B2A1A;">Forest Floor · Green · Afternoon</div>
+        <div class="theme-sw"><span style="background:#F6EEDD;"></span><span style="background:#E0D2B8;"></span><span style="background:#3B2A1A;"></span><span style="background:#5E7326;"></span></div>
       </div>
-      <div class="feat">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l4 6h-2.5l3 5H7.5l3-5H8z"/><path d="M12 14v5"/><path d="M6 9l3 5M18 9l-3 5"/></svg></div>
-        <h3>Forest</h3>
-        <p>Canopy roads and redwood groves under a green ceiling.</p>
+
+      <div class="theme" style="background:#F0EAD6; color:#2A1F08;">
+        <div class="theme-top"><span class="theme-nm" style="font-family:'Poppins','Futura',sans-serif; font-weight:700; letter-spacing:.05em;">Golden Hour</span><span class="tier pro">Pro</span></div>
+        <div class="theme-spec" style="font-family:'Poppins','Futura',sans-serif; font-weight:700; letter-spacing:.04em; color:#2A1F08;">The long way is the point<span style="color:#C49B20;">.</span></div>
+        <div class="theme-vibe" style="font-family:'Optima','Palatino Linotype',serif; color:#2A1F08;">Golden · Amber · Late Afternoon</div>
+        <div class="theme-sw"><span style="background:#FAF5E8;"></span><span style="background:#E4D8B8;"></span><span style="background:#2A1F08;"></span><span style="background:#C49B20;"></span></div>
       </div>
-      <div class="feat">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10c2-2 4 2 6 0s4-2 6 0 4 2 4 2"/><path d="M4 15c2-2 4 2 6 0s4-2 6 0 4 2 4 2"/></svg></div>
-        <h3>Lakeside</h3>
-        <p>Shoreline loops and reflections that make you slow down.</p>
+
+      <div class="theme" style="background:#C4C2BD; color:#141414;">
+        <div class="theme-top"><span class="theme-nm" style="font-family:'Helvetica Neue',Arial,sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:-.01em;">Overcast</span><span class="tier pro">Pro</span></div>
+        <div class="theme-spec" style="font-family:'Helvetica Neue',Arial,sans-serif; font-weight:700; text-transform:uppercase; color:#141414;">The long way is the point<span style="color:#E63312;">.</span></div>
+        <div class="theme-vibe" style="color:#141414;">Flat · Grey · Open Road</div>
+        <div class="theme-sw"><span style="background:#B8B6B0;"></span><span style="background:#9D9B95;"></span><span style="background:#141414;"></span><span style="background:#E63312;"></span></div>
       </div>
-      <div class="feat">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3"/><path d="M12 2v1.5M12 14.5V16M5 9H3.5M20.5 9H19M7 4L6 3M18 4l1-1"/><path d="M3 20c3-4 6-4 9 0 3-4 6-4 9 0"/></svg></div>
-        <h3>Desert</h3>
-        <p>Open horizons, big light, and roads that run to the edge of it.</p>
+
+      <div class="theme" style="background:#FAF8F4; color:#282420;">
+        <div class="theme-top"><span class="theme-nm" style="font-family:'Gill Sans','Gill Sans MT','Questrial',sans-serif; font-weight:600;">Morning Mist</span><span class="tier pro">Pro</span></div>
+        <div class="theme-spec" style="font-family:'Gill Sans','Gill Sans MT','Questrial',sans-serif; font-weight:600; color:#282420;">The long way is the point<span style="color:#A07954;">.</span></div>
+        <div class="theme-vibe" style="color:#282420;">Quiet · Pale · Still</div>
+        <div class="theme-sw"><span style="background:#FFFFFF;"></span><span style="background:#F0EDE6;"></span><span style="background:#282420;"></span><span style="background:#A07954;"></span></div>
       </div>
+
+      <div class="theme" style="background:#F4EFE3; color:#1C2844;">
+        <div class="theme-top"><span class="theme-nm" style="font-family:'Playfair Display','Didot',serif; font-weight:700;">Dusk</span><span class="tier pro">Pro</span></div>
+        <div class="theme-spec" style="font-family:'Playfair Display','Didot',serif; font-weight:700; color:#1C2844;">The long way is the point<span style="color:#8C1F3C;">.</span></div>
+        <div class="theme-vibe" style="font-family:'Playfair Display',serif; color:#1C2844;">Rich · Deep · End of Day</div>
+        <div class="theme-sw"><span style="background:#FBF7EC;"></span><span style="background:#E8DEC2;"></span><span style="background:#1C2844;"></span><span style="background:#8C1F3C;"></span></div>
+      </div>
+
     </div>
-    <p class="note">Placeholder set — drive categories will firm up with the Fora design reference</p>
+    <p class="note">Light &amp; dark for every theme · Set once in Settings, applied everywhere</p>
   </div>
 </section>
 
 <section id="categories">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Somewhere to land</span>
-      <h2>Third places worth the stop.</h2>
-      <p>Every place is sorted by type — so the map stays legible and you can filter for exactly the kind of lingering you're after.</p>
+      <span class="eyebrow">On the map</span>
+      <h2>Everything, by type.</h2>
+      <p>Twenty-one place categories and ten scenic-stop types, each with its own pin — so the map stays legible and you can filter for exactly what you're after.</p>
     </div>
+
+    <p class="catsub">Third places · 21</p>
     <div class="cat-grid">
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h11v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M16 9h2.3a2 2 0 0 1 0 4H16"/><path d="M8 3.6c-.4.8.4 1.2 0 2M11.5 3.6c-.4.8.4 1.2 0 2"/></svg><div class="l">Café</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.3-4.5-1.3-7-.5v12c2.5-.8 5-.8 7 .5 2-1.3 4.5-1.3 7-.5v-12c-2.5-.8-5-.8-7 .5z"/><path d="M12 6v12"/></svg><div class="l">Bookshop</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l5 7h-3l3 5H7l3-5H7z"/><path d="M12 15v6"/></svg><div class="l">Park</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14l-7 7z"/><path d="M12 12v6"/><path d="M8 20h8"/></svg><div class="l">Bar</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v7M5 3v4a2 2 0 0 0 4 0V3M7 10v11"/><path d="M16 3c-1.6 0-2.6 2.2-2.6 5.2 0 2.3 1.1 3.8 2.6 3.8v9"/></svg><div class="l">Diner</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a4 4 0 0 1 4-4h6a4 4 0 0 1 0 8H9a4 4 0 0 1-4-4z"/><path d="M10 9.2V17M14 9.2V17"/></svg><div class="l">Bakery</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 16l4-4 3 3 4-5 5 6"/></svg><div class="l">Gallery</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z"/><path d="M5 19c4-4 8-7 12-9"/></svg><div class="l">Garden</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-9 4 6 2-3 6 6z"/></svg><div class="l">Viewpoint</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l2-4h12l2 4"/><path d="M4 9h16v3H4z"/><path d="M6 12v8h12v-8"/></svg><div class="l">Market</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M12 5h6l2 2-2 2h-6"/><path d="M12 11H6l-2 2 2 2h6"/></svg><div class="l">Trailhead</div></div>
-      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg><div class="l">Record shop</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h11v4a5 5 0 0 1-10 0z"/><path d="M16 8h2.3a2 2 0 0 1 0 4H16"/><path d="M4 20h13"/></svg><div class="l">Café</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/><path d="M4 16h16"/><path d="M8 12V9.5M12 12V9.5M16 12V9.5"/><path d="M8 7.5v-1M12 7.5v-1M16 7.5v-1"/></svg><div class="l">Bakery</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M5 3v4a2 2 0 0 0 4 0V3M7 11v10"/><path d="M16 3c-1.4 0-2.3 2-2.3 5s.9 4 2.3 4m0 0v9m0-9V3"/></svg><div class="l">Diner</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h11v15H7a2 2 0 0 1-2-2V5a1 1 0 0 1 1-1z"/><path d="M7 19a2 2 0 0 1 0-4h10"/></svg><div class="l">Bookshop</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg><div class="l">Record Shop</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/><path d="M3 4h2l2.2 11h10l2-7H6"/></svg><div class="l">Co-op</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h14l-1.3 9H6.3z"/><path d="M8.5 9l3-5 3 5"/><path d="M9 12v3M15 12v3"/></svg><div class="l">Market</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-13 14-13 0 10-6 14-14 13z"/><path d="M5 19C9 15 12 12 16 10"/></svg><div class="l">Farm Stand</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h12v4a6 6 0 0 1-12 0z"/><path d="M9.5 8.5h.01M14.5 8.5h.01"/><path d="M9.5 11.5a3 2 0 0 0 5 0"/></svg><div class="l">Theater</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l8-5 8 5"/><path d="M4 9.5h16"/><path d="M6 11v7M10 11v7M14 11v7M18 11v7"/><path d="M4 18.5h16"/></svg><div class="l">Museum</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 8 0 1 0 2.2 15.8c1-.3.9-1.3.2-2-.6-.6-.4-1.7.6-1.9h1.6A3.5 3.5 0 0 0 21 11c0-4.4-4-8-9-8z"/><circle cx="8" cy="10" r="1"/><circle cx="12" cy="7.6" r="1"/><circle cx="16" cy="10" r="1"/></svg><div class="l">Art Center</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h3v16H6zM9.5 4h3v16h-3z"/><path d="M14 5l3 .5-2.4 14-3-.5z"/></svg><div class="l">Library</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h8a5 5 0 0 1 5 5 2.6 2.6 0 0 1-4.8 1.4L15.5 13h-7l-.7 1.4A2.6 2.6 0 0 1 3 13a5 5 0 0 1 5-5z"/><path d="M6.5 11v2M5.5 12h2"/><circle cx="16" cy="11.6" r=".7"/><circle cx="17.6" cy="13.2" r=".7"/></svg><div class="l">Arcade</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4.3"/><circle cx="6.8" cy="14" r=".7"/><circle cx="8.8" cy="13.4" r=".7"/><path d="M16.5 5c-1 0-1.6 1.3-1.6 3.5s.6 7.5 1.6 7.5 1.6-5.3 1.6-7.5S17.5 5 16.5 5z"/></svg><div class="l">Bowling</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="5" r="1.6"/><path d="M13 7l-3 4 2.5 2.5-1 5.5M12.5 13.5l4 1.5M10 11l-4 1"/></svg><div class="l">Climbing</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 3.6l3.6 3.6-2.4 2.4-3.6-3.6z"/><path d="M11.8 7.4L4.8 14.4a1.5 1.5 0 0 0 2.1 2.1l7-7"/></svg><div class="l">Makerspace</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V8h7v12"/><path d="M11 20v-7h8v7"/><path d="M6.5 11h2M6.5 14.5h2M14 16h2"/></svg><div class="l">Grange / Hall</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.6-4h12.8L20 9"/><path d="M4 9v.6a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0V9"/><path d="M5.5 12v7h13v-7"/><path d="M10 19v-4h4v4"/></svg><div class="l">General Store</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-5"/><path d="M12 16c-3.6 0-6-2.4-6-5.6 0-1.3.5-2.5 1.3-3.4C7 4.8 9.3 3 12 3s5 1.8 4.7 4c.8.9 1.3 2.1 1.3 3.4 0 3.2-2.4 5.6-6 5.6z"/></svg><div class="l">Park</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg><div class="l">Antique Shop</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4-5 6-8 6-11a6 6 0 0 0-12 0c0 3 2 6 6 11z"/><circle cx="12" cy="10" r="2"/></svg><div class="l">Other</div></div>
+    </div>
+
+    <p class="catsub gap">Along the drive · 10</p>
+    <div class="cat-grid">
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h3l.6 2.2M17 7h-3l-.6 2.2"/><circle cx="7" cy="14" r="3.4"/><circle cx="17" cy="14" r="3.4"/><path d="M10.4 13h3.2"/></svg><div class="l">Overlook</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l6 11a6 6 0 1 1-12 0z"/></svg><div class="l">Waterfall</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l6-11 4 7 2-3 6 7z"/><path d="M9 8l2.4 4.3"/></svg><div class="l">Summit</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C7 3 3.5 6.5 3.5 10h17C20.5 6.5 17 3 12 3z"/><path d="M12 3v18"/><path d="M9 21h6"/></svg><div class="l">Beach</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l8-6 8 6"/><path d="M6 11v8h12v-8"/><path d="M10 19v-4h4v4"/></svg><div class="l">Village</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4-5 6-8 6-11a6 6 0 0 0-12 0c0 3 2 6 6 11z"/><circle cx="12" cy="10" r="2"/></svg><div class="l">Landmark</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-5"/><path d="M12 16c-3.6 0-6-2.4-6-5.6 0-1.3.5-2.5 1.3-3.4C7 4.8 9.3 3 12 3s5 1.8 4.7 4c.8.9 1.3 2.1 1.3 3.4 0 3.2-2.4 5.6-6 5.6z"/></svg><div class="l">Park</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg><div class="l">Picnic</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="1.6"/><path d="M13 6l-2 5 3 2 1 6M11 11l-3 2-1 5M14 8l3 1"/></svg><div class="l">Trailhead</div></div>
+      <div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l8-5 8 5"/><path d="M4 9.5h16"/><path d="M6 11v7M10 11v7M14 11v7M18 11v7"/><path d="M4 18.5h16"/></svg><div class="l">Historic</div></div>
     </div>
   </div>
 </section>
@@ -420,7 +468,7 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
       <div class="foot-col">
         <h4>Fora</h4>
         <a href="#features">Features</a>
-        <a href="#drives">Drives</a>
+        <a href="#themes">Themes</a>
         <a href="#get">Coming soon</a>
       </div>
       <div class="foot-col">
