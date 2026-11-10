@@ -3,14 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Situ — Every building has a story</title>
-<meta name="description" content="Situ is an iOS field guide to the architecture around you — browse a curated catalog of landmarks, see them on a map, read the story behind each one, and reskin the whole app with seven themes. No account. No tracking.">
-<meta property="og:title" content="Situ — Every building has a story">
-<meta property="og:description" content="An iOS field guide to architectural and historic landmarks. Seven themes. Private by design.">
+<title>Situ — A field guide to the built world</title>
+<meta name="description" content="Situ is an iOS field guide to 1,000+ architectural landmarks — browse them on a map, read the story behind each one, and save the places you love. No account. No ads.">
+<meta property="og:title" content="Situ — A field guide to the built world">
+<meta property="og:description" content="1,000+ architectural landmarks on a map in your pocket. Browse, read the story behind each one, and save the places you love.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://ezgstudio.github.io/situ/">
+<meta property="og:image" content="https://ezgstudio.github.io/situ/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ezgstudio.github.io/situ/assets/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;700&family=Playfair+Display:wght@600;700&family=Archivo+Narrow:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F4F2EE; --surface:#FFFFFF; --surf2:#EDEAE3;
@@ -86,36 +92,31 @@ h1 .dot{color:var(--accent);}
 .hero-note{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
   color:var(--faint); margin-top:16px;}
 
-/* ---------- Device mock ---------- */
-.device-col{display:flex; justify-content:center;}
-.device{width:274px; max-width:80vw; border-radius:40px; padding:11px;
-  background:color-mix(in srgb,var(--text) 90%, var(--bg)); box-shadow:0 30px 70px -30px rgba(0,0,0,.5);}
-.screen{border-radius:30px; overflow:hidden; background:var(--surface); border:1px solid var(--hair);}
-.shot{position:relative; height:224px;
-  background-image:
-    radial-gradient(70% 90% at 30% 10%, color-mix(in srgb,var(--accent) 34%, transparent), transparent 70%),
-    radial-gradient(circle at center, color-mix(in srgb,var(--text) 12%, transparent) 1.3px, transparent 1.5px);
-  background-size:auto, 18px 18px; background-color:var(--surf2);}
-.pin{position:absolute; width:40px; height:40px; border-radius:50%; background:var(--surface);
-  border:1px solid var(--line); display:grid; place-items:center; color:var(--accent);
-  box-shadow:0 8px 18px -8px rgba(0,0,0,.45);}
-.pin svg{width:21px; height:21px;}
-.pin::after{content:""; position:absolute; bottom:-6px; left:50%; transform:translateX(-50%);
-  border-left:6px solid transparent; border-right:6px solid transparent; border-top:7px solid var(--surface);}
-.pin.sel{background:var(--text); color:var(--bg); transform:scale(1.08);}
-.pin.sel::after{border-top-color:var(--text);}
-.sheet{padding:17px 18px 20px;}
-.sheet .title{font-size:21px; font-weight:800; letter-spacing:-.02em; margin:7px 0 0; font-family:var(--sans);}
-.sheet .coord{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; color:var(--mute); margin-top:6px;}
-.sheet .blurb{font-size:13px; color:var(--mute); margin:11px 0 0; line-height:1.5;}
-.chip-row{display:flex; gap:7px; margin-top:14px;}
-.cc{width:16px; height:16px; border-radius:50%; border:1px solid var(--hair);}
-.glasspill{position:absolute; left:14px; right:14px; bottom:14px; height:38px; border-radius:999px;
-  background:color-mix(in srgb,var(--surface) 70%, transparent);
-  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-  border:1px solid var(--line); display:flex; align-items:center; gap:8px; padding:0 14px;
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute);}
-.glasspill .d{width:6px; height:6px; border-radius:50%; background:var(--accent);}
+/* ---------- Phones (real screenshots) ---------- */
+.phones{position:relative; width:100%; max-width:470px; height:600px; margin:0 auto;}
+.phone{border-radius:38px; padding:8px; background:#17181c;
+  box-shadow:0 34px 70px -34px rgba(0,0,0,.55), 0 0 0 1px rgba(127,127,127,.35);}
+.phone img,.phone video{display:block; width:100%; height:auto; border-radius:30px; background:var(--surf2);}
+.phones .phone{position:absolute; width:248px;}
+.phones .phone.front{left:2%; top:70px; transform:rotate(-3deg); z-index:2;}
+.phones .phone.back{right:2%; top:0; transform:rotate(3deg);}
+.btn svg{width:19px; height:19px; fill:currentColor; flex:none;}
+
+/* gallery */
+.band{background:var(--surf2); border-top:1px solid var(--hair); border-bottom:1px solid var(--hair);}
+.shots{display:grid; grid-template-columns:repeat(5,1fr); gap:22px; align-items:start;}
+.shot{margin:0;}
+.shot .phone{width:100%;}
+.shot figcaption{margin-top:18px; text-align:center;}
+.shot .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint);}
+.shot .t{font-size:16px; font-weight:700; letter-spacing:-.01em; line-height:1.25; margin-top:6px;}
+
+/* preview video */
+.preview-in{display:grid; grid-template-columns:1fr auto; align-items:center; gap:64px; max-width:900px; margin:0 auto;}
+.preview-in h2{font-size:clamp(28px,4vw,40px); font-weight:800; letter-spacing:-.03em; margin:12px 0 0; line-height:1.08;}
+.preview-in p{color:var(--mute); margin:16px 0 0; max-width:26em;}
+.preview-in .phone{width:290px;}
+.preview-in video{aspect-ratio:540/1170; background:#000;}
 
 /* ---------- Sections ---------- */
 section{padding:84px 0;}
@@ -134,20 +135,19 @@ section{padding:84px 0;}
 /* ---------- Themes ---------- */
 .themes{background:var(--surf2); border-top:1px solid var(--hair); border-bottom:1px solid var(--hair);}
 .theme-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
-.theme-grid .wide{grid-column:span 2;}
 .theme{border-radius:16px; padding:20px; border:1px solid rgba(0,0,0,.08);
   box-shadow:0 14px 30px -22px rgba(0,0,0,.55); min-height:172px; display:flex; flex-direction:column;}
 .theme-top{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px;}
 .theme-nm{font-size:17px; font-weight:700;}
 .tier{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase;
   padding:3px 9px; border-radius:999px; white-space:nowrap;}
-.tier.free{background:#1f7a3f; color:#fff;}
 .tier.pro{background:#8445d6; color:#fff;}
 .theme-spec{font-size:21px; line-height:1.14; margin:12px 0 auto; letter-spacing:-.01em;}
 .theme-vibe{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
   opacity:.62; margin-top:14px;}
 .theme-sw{display:flex; gap:6px; margin-top:10px;}
 .theme-sw span{width:22px; height:22px; border-radius:6px; border:1px solid rgba(0,0,0,.14);}
+.theme.soon{background:var(--surface); border:1px dashed var(--line); color:var(--text); box-shadow:none;}
 .themes .note{text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.08em;
   text-transform:uppercase; color:var(--faint); margin:28px 0 0;}
 
@@ -184,19 +184,27 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
   margin-top:38px; padding-top:22px; border-top:1px solid var(--hair);
   font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint);}
 
+@media(max-width:1000px){
+  .shots{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:18px; margin:0 -24px; padding:4px 24px 22px; -webkit-overflow-scrolling:touch;}
+  .shot{flex:0 0 min(62vw,236px); scroll-snap-align:center;}
+}
 @media(max-width:900px){
   .feat-grid{grid-template-columns:repeat(2,1fr);}
-  .theme-grid{grid-template-columns:repeat(2,1fr);} .theme-grid .wide{grid-column:span 2;}
+  .theme-grid{grid-template-columns:repeat(2,1fr);}
   .priv-grid{grid-template-columns:repeat(2,1fr);}
   .foot-grid{grid-template-columns:1fr 1fr;} .foot-brand{grid-column:1/-1;}
 }
 @media(max-width:760px){
-  .hero-in{grid-template-columns:1fr; gap:40px; padding:54px 0 64px;}
-  .device-col{order:2;}
+  .hero-in{grid-template-columns:1fr; gap:36px; padding:54px 0 64px;}
+  .phones{order:2;}
+  .preview-in{grid-template-columns:1fr; gap:36px; text-align:center; justify-items:center;}
+  .preview-in p{margin-left:auto; margin-right:auto;}
 }
 @media(max-width:520px){
   .feat-grid{grid-template-columns:1fr;}
-  .theme-grid{grid-template-columns:1fr;} .theme-grid .wide{grid-column:span 1;}
+  .theme-grid{grid-template-columns:1fr;}
+  .phones{height:560px;}
+  .phones .phone{width:226px;}
 }
 </style>
 </head>
@@ -207,10 +215,11 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
     <a class="brand mark" href="/situ/">situ<span class="dot">.</span></a>
     <div class="nav-links">
       <a href="#features" class="hide-sm">Features</a>
+      <a href="#screens" class="hide-sm">Screens</a>
       <a href="#themes" class="hide-sm">Themes</a>
       <a href="#privacy" class="hide-sm">Privacy</a>
       <a href="/" class="hide-sm">EZG Studio</a>
-      <a class="nav-cta" href="#get">Coming soon</a>
+      <a class="nav-cta" href="https://apps.apple.com/us/app/situ-architecture-map/id6829291538" target="_blank" rel="noopener">Get Situ</a>
     </div>
   </div>
 </nav>
@@ -220,43 +229,19 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
   <div class="wrap">
     <div class="hero-in">
       <div class="hero-copy">
-        <span class="badge"><span class="d"></span>iOS · Architectural field guide</span>
-        <h1>Every building<br>has a story<span class="dot">.</span></h1>
-        <p class="lede">Situ is a field guide to the architecture around you — browse a curated catalog of landmarks, see them on a map, and read who built each one, when, and why it matters.</p>
+        <span class="badge"><span class="d"></span>iOS · 1,000+ architectural landmarks</span>
+        <h1>A field guide<br>to the built world<span class="dot">.</span></h1>
+        <p class="lede">Situ puts 1,000+ architectural landmarks on a map in your pocket — read who built each one and why it matters, and keep a list of the places you love.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="#get">Coming to the App Store</a>
-          <a class="btn btn-ghost" href="#themes">Explore the themes</a>
+          <a class="btn btn-primary" href="https://apps.apple.com/us/app/situ-architecture-map/id6829291538" target="_blank" rel="noopener" aria-label="Download Situ on the App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.64zM14.77 5.6c.64-.78 1.07-1.85.95-2.93-.92.04-2.03.61-2.69 1.38-.59.69-1.11 1.79-.97 2.84 1.02.08 2.07-.52 2.71-1.29z"/></svg>Download on the App Store</a>
+          <a class="btn btn-ghost" href="#preview">Watch the preview</a>
         </div>
         <div class="hero-note">No account · No ads · No tracking · Location stays on your device</div>
       </div>
 
-      <div class="device-col">
-        <div class="device" aria-hidden="true">
-          <div class="screen">
-            <div class="shot">
-              <div class="pin sel" style="top:58px; left:66px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l8-5 8 5"/><path d="M4 9.5h16"/><path d="M6 11v7M10 11v7M14 11v7M18 11v7"/><path d="M4 18.5h16"/></svg>
-              </div>
-              <div class="pin" style="top:120px; left:168px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="4.5"/><circle cx="12" cy="9" r="1.3"/><path d="M9.6 12.8L8 20l4-2.6 4 2.6-1.6-7.2"/></svg>
-              </div>
-              <div class="glasspill"><span class="d"></span>Search this area</div>
-            </div>
-            <div class="sheet">
-              <span class="eyebrow">Historic · 1902</span>
-              <div class="title">Flatiron Building</div>
-              <div class="coord">40.7411° N&nbsp;&nbsp;73.9897° W</div>
-              <p class="blurb">A Beaux-Arts icon and one of the city's first steel-frame skyscrapers, its wedge shape set by the streets that meet beneath it.</p>
-              <div class="chip-row">
-                <span class="cc" style="background:#D9531E;"></span>
-                <span class="cc" style="background:#5E7326;"></span>
-                <span class="cc" style="background:#2563EB;"></span>
-                <span class="cc" style="background:#C49B20;"></span>
-                <span class="cc" style="background:#8C1F3C;"></span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="phones">
+        <div class="phone back"><img src="assets/shot-map.webp" alt="Situ's map of Manhattan with category pins and landmark clusters" width="560" height="1216" loading="eager"></div>
+        <div class="phone front"><img src="assets/shot-detail.webp" alt="Situ's detail page for Grand Central Terminal: architect, style, year built and history" width="560" height="1216" loading="eager"></div>
       </div>
     </div>
   </div>
@@ -272,34 +257,82 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
     <div class="feat-grid">
       <div class="feat">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="4.5"/><circle cx="12" cy="9" r="1.3"/><path d="M9.6 12.8L8 20l4-2.6 4 2.6-1.6-7.2"/></svg></div>
-        <h3>A curated catalog</h3>
-        <p>Hand-picked landmarks with editorial detail — the architect, the year, the style, and the story behind the façade.</p>
+        <h3>1,000+ landmarks</h3>
+        <p>A curated catalog of architectural landmarks, each with its architect, year, style and function — and the story behind the façade.</p>
       </div>
       <div class="feat">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l8-5 8 5"/><path d="M4 9.5h16"/><path d="M6 11v7M10 11v7M14 11v7M18 11v7"/><path d="M4 18.5h16"/></svg></div>
         <h3>Mapped with museum labels</h3>
-        <p>Every site is a category pin on the map. Tap one to see exactly what you're standing in front of, right now.</p>
+        <p>Every site is a category pin on the map, and dense areas cluster into counts. Tap one to see exactly what you're standing in front of.</p>
       </div>
       <div class="feat">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M12 4v16M4 12h16"/></svg></div>
-        <h3>Seven complete themes</h3>
-        <p>Reskin the entire app — type, colour, and corners — from Swiss-modern Contemporary to high-contrast Beaux-Arts.</p>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.2-4.2"/></svg></div>
+        <h3>Search and filter</h3>
+        <p>Search the whole catalog by name and filter it down to what you're curious about, with the distance to each site from where you are.</p>
       </div>
       <div class="feat">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-4-6 4V5a1 1 0 0 1 1-1z"/></svg></div>
-        <h3>Save your favorites</h3>
-        <p>Keep a personal list of the places you love. Favorites live on your device — never uploaded to a server.</p>
+        <h3>Favorites &amp; Visited</h3>
+        <p>Save the places you love and mark the ones you've been to. Both lists live on your device, with a running tally of states, styles and architects.</p>
       </div>
       <div class="feat">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 3.6l3.6 3.6-2.4 2.4-3.6-3.6z"/><path d="M11.8 7.4L4.8 14.4a1.5 1.5 0 0 0 2.1 2.1l7-7"/></svg></div>
         <h3>Help build the map</h3>
-        <p>Spot a missing landmark? Submit it or flag a correction — contributions go through editorial review before they're published.</p>
+        <p>Spot a missing landmark or a mistake? Submit it or flag a correction — contributions go through editorial review before they're published.</p>
       </div>
       <div class="feat">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9.3 12l2 2 3.4-3.6"/></svg></div>
         <h3>Private by design</h3>
-        <p>No account to create, no ads, no third-party tracking. Your location is used on-device to find what's nearby.</p>
+        <p>No account to create, no ads, and no behavioral tracking — just anonymous crash reports so we can fix bugs. Your location is used on-device to find what's nearby.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="screens" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Map · Explore · Collect</span>
+      <h2>Take a look inside.</h2>
+      <p>Five screens from the app, straight from the App Store.</p>
+    </div>
+    <div class="shots">
+      <figure class="shot">
+        <div class="phone"><img src="assets/shot-map.webp" alt="The Situ map with landmark pins across Manhattan" width="560" height="1216" loading="lazy"></div>
+        <figcaption><div class="k">Discover</div><div class="t">Architecture around you</div></figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone"><img src="assets/shot-explore.webp" alt="The Explore list: landmarks with architect, year, style and distance" width="560" height="1216" loading="lazy"></div>
+        <figcaption><div class="k">Explore</div><div class="t">Browse over 1,000 landmarks</div></figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone"><img src="assets/shot-detail.webp" alt="Grand Central Terminal's detail page with photo gallery and history" width="560" height="1216" loading="lazy"></div>
+        <figcaption><div class="k">Every site</div><div class="t">The story behind the structure</div></figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone"><img src="assets/shot-saved.webp" alt="The Saved tab showing Favorites as a photo grid with a running tally" width="560" height="1216" loading="lazy"></div>
+        <figcaption><div class="k">Collect</div><div class="t">Save the places you love</div></figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone"><img src="assets/shot-theme.webp" alt="The Theme screen: Contemporary, Mid-Century and Brutalist, with Pro themes coming soon" width="560" height="1216" loading="lazy"></div>
+        <figcaption><div class="k">Personalize</div><div class="t">Make the app your own</div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="preview">
+  <div class="wrap">
+    <div class="preview-in">
+      <div>
+        <span class="eyebrow">App preview</span>
+        <h2>Thirty seconds, start to finish.</h2>
+        <p>The map, the catalog, the story behind each building and a list of your own — the same preview you'll find on the App Store.</p>
+        <div class="cta" style="margin-top:26px;">
+          <a class="btn btn-primary" href="https://apps.apple.com/us/app/situ-architecture-map/id6829291538" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.64zM14.77 5.6c.64-.78 1.07-1.85.95-2.93-.92.04-2.03.61-2.69 1.38-.59.69-1.11 1.79-.97 2.84 1.02.08 2.07-.52 2.71-1.29z"/></svg>Get Situ</a>
+        </div>
+      </div>
+      <div class="phone"><video controls playsinline preload="none" poster="assets/preview-poster.webp" width="540" height="1170" aria-label="Situ app preview, 30 seconds"><source src="assets/preview.mp4" type="video/mp4"></video></div>
     </div>
   </div>
 </section>
@@ -307,63 +340,41 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
 <section id="themes" class="themes">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Seven worlds</span>
-      <h2>One app, seven design languages.</h2>
-      <p>Each theme is a complete typographic and chromatic world — a new face, palette, and set of corners for the whole app. Three are free; four unlock with Situ Pro.</p>
+      <span class="eyebrow">Make it yours</span>
+      <h2>Three themes. More on the way.</h2>
+      <p>Each theme restyles the colors, typography and atmosphere of the whole app. Pick yours in Profile → Theme. More palettes are coming with Situ Pro.</p>
     </div>
     <div class="theme-grid">
 
-      <div class="theme wide" style="background:#F4F2EE; color:#111318;">
-        <div class="theme-top"><span class="theme-nm" style="font-family:var(--sans); font-weight:800; letter-spacing:-.02em;">Contemporary</span><span class="tier free">Free · Default</span></div>
+      <div class="theme" style="background:#F4F2EE; color:#111318;">
+        <div class="theme-top"><span class="theme-nm" style="font-family:var(--sans); font-weight:800; letter-spacing:-.02em;">Contemporary</span></div>
         <div class="theme-spec" style="font-family:var(--sans); font-weight:700; letter-spacing:-.02em; color:#111318;">Every building has a story<span style="color:#D9531E;">.</span></div>
         <div class="theme-vibe" style="color:#111318;">Clean · Neutral · Modern</div>
         <div class="theme-sw"><span style="background:#FFFFFF;"></span><span style="background:#EDEAE3;"></span><span style="background:#111318;"></span><span style="background:#D9531E;"></span></div>
       </div>
 
       <div class="theme" style="background:#EDE3D2; color:#3B2A1A;">
-        <div class="theme-top"><span class="theme-nm" style="font-family:'Poppins','Futura',sans-serif; font-weight:700;">Mid-Century</span><span class="tier free">Free</span></div>
+        <div class="theme-top"><span class="theme-nm" style="font-family:'Poppins','Futura',sans-serif; font-weight:700;">Mid-Century</span></div>
         <div class="theme-spec" style="font-family:'Poppins','Futura',sans-serif; font-weight:700; color:#3B2A1A;">Every building has a story<span style="color:#5E7326;">.</span></div>
         <div class="theme-vibe" style="color:#3B2A1A;">Warm · Avocado · Retro</div>
         <div class="theme-sw"><span style="background:#F6EEDD;"></span><span style="background:#E0D2B8;"></span><span style="background:#3B2A1A;"></span><span style="background:#5E7326;"></span></div>
       </div>
 
       <div class="theme" style="background:#C4C2BD; color:#141414;">
-        <div class="theme-top"><span class="theme-nm" style="font-family:'Helvetica Neue',Arial,sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:-.01em;">Brutalist</span><span class="tier free">Free</span></div>
+        <div class="theme-top"><span class="theme-nm" style="font-family:'Helvetica Neue',Arial,sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:-.01em;">Brutalist</span></div>
         <div class="theme-spec" style="font-family:'Helvetica Neue',Arial,sans-serif; font-weight:700; text-transform:uppercase; color:#141414;">Every building has a story<span style="color:#E63312;">.</span></div>
         <div class="theme-vibe" style="color:#141414;">Concrete · Raw · Direct</div>
         <div class="theme-sw"><span style="background:#B8B6B0;"></span><span style="background:#ABA9A3;"></span><span style="background:#141414;"></span><span style="background:#E63312;"></span></div>
       </div>
 
-      <div class="theme" style="background:#EBF0F7; color:#1E3A5F;">
-        <div class="theme-top"><span class="theme-nm" style="font-family:'Archivo Narrow','Avenir Next Condensed',sans-serif; font-weight:600;">Blueprint</span><span class="tier pro">Pro</span></div>
-        <div class="theme-spec" style="font-family:'Archivo Narrow','Avenir Next Condensed',sans-serif; font-weight:600; color:#1E3A5F;">Every building has a story<span style="color:#2563EB;">.</span></div>
-        <div class="theme-vibe" style="font-family:'Courier New',monospace; color:#1E3A5F;">Technical · Grid · Drafting</div>
-        <div class="theme-sw"><span style="background:#F4F7FB;"></span><span style="background:#D4E0EE;"></span><span style="background:#1E3A5F;"></span><span style="background:#2563EB;"></span></div>
-      </div>
-
-      <div class="theme" style="background:#F0EAD6; color:#2A1F08;">
-        <div class="theme-top"><span class="theme-nm" style="font-family:'Poppins','Futura',sans-serif; font-weight:700; letter-spacing:.05em;">Art Deco</span><span class="tier pro">Pro</span></div>
-        <div class="theme-spec" style="font-family:'Poppins','Futura',sans-serif; font-weight:700; letter-spacing:.04em; color:#2A1F08;">Every building has a story<span style="color:#C49B20;">.</span></div>
-        <div class="theme-vibe" style="font-family:'Optima','Palatino Linotype',serif; color:#2A1F08;">Bold · Gold · Geometric</div>
-        <div class="theme-sw"><span style="background:#FAF5E8;"></span><span style="background:#E4D8B8;"></span><span style="background:#2A1F08;"></span><span style="background:#C49B20;"></span></div>
-      </div>
-
-      <div class="theme" style="background:#FAF8F4; color:#282420;">
-        <div class="theme-top"><span class="theme-nm" style="font-family:'Gill Sans','Gill Sans MT','Questrial',sans-serif; font-weight:600;">Minimalist</span><span class="tier pro">Pro</span></div>
-        <div class="theme-spec" style="font-family:'Gill Sans','Gill Sans MT','Questrial',sans-serif; font-weight:600; color:#282420;">Every building has a story<span style="color:#A07954;">.</span></div>
-        <div class="theme-vibe" style="color:#282420;">White Space · Quiet · Pure</div>
-        <div class="theme-sw"><span style="background:#FFFFFF;"></span><span style="background:#F0EDE6;"></span><span style="background:#282420;"></span><span style="background:#A07954;"></span></div>
-      </div>
-
-      <div class="theme" style="background:#F4EFE3; color:#1C2844;">
-        <div class="theme-top"><span class="theme-nm" style="font-family:'Playfair Display','Didot',serif; font-weight:700;">Beaux-Arts</span><span class="tier pro">Pro</span></div>
-        <div class="theme-spec" style="font-family:'Playfair Display','Didot',serif; font-weight:700; color:#1C2844;">Every building has a story<span style="color:#8C1F3C;">.</span></div>
-        <div class="theme-vibe" style="font-family:'Playfair Display',serif; color:#1C2844;">Ivory · Burgundy · Classical</div>
-        <div class="theme-sw"><span style="background:#FBF7EC;"></span><span style="background:#E8DEC2;"></span><span style="background:#1C2844;"></span><span style="background:#8C1F3C;"></span></div>
+      <div class="theme soon">
+        <div class="theme-top"><span class="theme-nm">Pro Themes</span><span class="tier pro">Pro</span></div>
+        <div class="theme-spec" style="color:var(--mute);">More palettes, same app.</div>
+        <div class="theme-vibe">More palettes · Coming soon</div>
       </div>
 
     </div>
-    <p class="note">Light &amp; dark for every theme · Set once in Settings, applied everywhere</p>
+    <p class="note">Set once in Profile → Theme · Applied everywhere</p>
   </div>
 </section>
 
@@ -400,9 +411,9 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
     </div>
     <div class="priv-grid">
       <div class="priv"><div class="big">No account</div><p>Opens anonymously. We never ask for your name or email.</p></div>
-      <div class="priv"><div class="big">No tracking</div><p>No third-party analytics or advertising SDKs. No ad identifiers.</p></div>
+      <div class="priv"><div class="big">No ads or tracking</div><p>No advertising or behavioral-analytics SDKs, no ad identifiers. Just anonymous crash reports.</p></div>
       <div class="priv"><div class="big">On-device location</div><p>Used to show what's nearby. It isn't transmitted to or stored by us.</p></div>
-      <div class="priv"><div class="big">Your favorites, yours</div><p>Saved landmarks stay on your device and leave when you delete the app.</p></div>
+      <div class="priv"><div class="big">Your lists, yours</div><p>Favorites and Visited stay on your device and leave when you delete the app.</p></div>
     </div>
     <div class="priv-foot">
       <a href="privacy.html">Read the full Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Service</a>
@@ -412,12 +423,12 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
 
 <section id="get" style="text-align:center;">
   <div class="wrap">
-    <span class="eyebrow">Almost here</span>
-    <h2 style="font-size:clamp(28px,4vw,40px); font-weight:800; letter-spacing:-.03em; margin:12px 0 0;">Coming to the App Store.</h2>
-    <p style="color:var(--mute); max-width:34em; margin:14px auto 0;">Situ is in the final stretch before launch on iOS. Want a heads-up when it ships, or have a landmark we should include?</p>
+    <span class="eyebrow">Now on iOS</span>
+    <h2 style="font-size:clamp(28px,4vw,40px); font-weight:800; letter-spacing:-.03em; margin:12px 0 0;">Download Situ.</h2>
+    <p style="color:var(--mute); max-width:34em; margin:14px auto 0;">Free on the App Store. Spotted a landmark that's missing, or a correction to make? Flag it in the app, or tell us directly.</p>
     <div class="cta" style="justify-content:center; margin-top:26px;">
-      <a class="btn btn-primary" href="mailto:ezgforge@gmail.com?subject=Situ%20—%20notify%20me%20at%20launch">Get notified</a>
-      <a class="btn btn-ghost" href="/">More from EZG Studio</a>
+      <a class="btn btn-primary" href="https://apps.apple.com/us/app/situ-architecture-map/id6829291538" target="_blank" rel="noopener" aria-label="Download Situ on the App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.64zM14.77 5.6c.64-.78 1.07-1.85.95-2.93-.92.04-2.03.61-2.69 1.38-.59.69-1.11 1.79-.97 2.84 1.02.08 2.07-.52 2.71-1.29z"/></svg>Download on the App Store</a>
+      <a class="btn btn-ghost" href="mailto:ezgforge@gmail.com?subject=Situ%20%E2%80%94%20landmark%20suggestion">Suggest a landmark</a>
     </div>
   </div>
 </section>
@@ -432,8 +443,9 @@ footer{background:var(--surf2); border-top:1px solid var(--hair); padding:52px 0
       <div class="foot-col">
         <h4>Situ</h4>
         <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
         <a href="#themes">Themes</a>
-        <a href="#get">Coming soon</a>
+        <a href="#get">Download</a>
       </div>
       <div class="foot-col">
         <h4>Legal</h4>
