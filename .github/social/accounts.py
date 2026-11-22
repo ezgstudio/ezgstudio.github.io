@@ -9,10 +9,12 @@ never looks like a follow-bot.
 """
 import json
 import os
+import re
 import sys
 import time
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 from post import HERE, api
@@ -21,13 +23,30 @@ PUBLIC = "https://public.api.bsky.app/xrpc"
 MAX_FOLLOWS_PER_RUN = 40
 
 TOPICS = {
-    "architecture": ["architecture", "architect", "architectural history", "brutalism", "mid-century modern", "historic preservation"],
-    "design": ["urbanism", "industrial design", "graphic design", "typography"],
-    "ios": ["indie ios developer", "swiftui", "indie app developer", "apple developer"],
-    "collecting": ["vinyl collector", "record collecting", "book collector", "trading cards collector"],
-    "roads": ["road trip", "scenic drives", "roadside america", "independent bookshop", "coffee shop"],
-    "making": ["laser cutter", "3d printing", "maker", "woodworking"],
+    "architecture": ["architecture", "architect", "architectural history", "brutalism", "mid-century modern", "historic preservation",
+                     "architectural historian", "preservationist", "landmarks", "modernist architecture", "architecture photography",
+                     "interior design", "architecture critic", "historic buildings", "urban planning", "adaptive reuse", "art deco",
+                     "midcentury architecture", "architecture student", "built environment"],
+    "design": ["urbanism", "industrial design", "graphic design", "typography", "product design", "graphic designer", "design history",
+               "type design", "poster design", "industrial designer", "ux design", "design studio", "illustrator", "design museum"],
+    "ios": ["indie ios developer", "swiftui", "indie app developer", "apple developer", "ios developer", "swift developer",
+            "mac developer", "app store", "indie dev", "apple platforms", "xcode", "wwdc", "swiftdata", "solo founder", "indie hacker"],
+    "collecting": ["vinyl collector", "record collecting", "book collector", "trading cards collector", "record store", "vinyl records",
+                   "used bookstore", "bibliophile", "zine", "sneaker collector", "record shop", "thrifting", "antiques",
+                   "lego collector", "comic collector", "watch collector", "collection"],
+    "roads": ["road trip", "scenic drives", "roadside america", "independent bookshop", "coffee shop", "scenic byway", "road trips",
+              "national parks", "roadside attractions", "diner", "coffee roaster", "small town travel", "travel photography", "bookshop"],
+    "making": ["laser cutter", "3d printing", "maker", "woodworking", "laser engraving", "3d printer", "makerspace", "cnc",
+               "fabrication", "woodworker", "product design maker", "craft"],
 }
+
+
+BAD = re.compile(r"trump|republican|maga|\bdem\b|democrat|progressive|lefty|liberal|resist|fuck|shit|sweary|fascis|anti-|vote|biden|"
+                 r"politic|activist|nsfw|18\+|🔞|dm me|follow back|follows? back|crypto|nft|onlyfans|\bbot\b|snark|🍉|genocide|gaza|"
+                 r"kink|porn|fetish|furry|fursuit|commissions? open|ai art|prompt", re.I)
+GOOD = re.compile(r"architect|preserv|building|landmark|brutal|modernis|urban|planner|design|heritage|historic|typograph|industrial|"
+                  r"graphic|poster|studio|\bios\b|swift|\bapp|indie|developer|apple|xcode|vinyl|record|collect|book|crate|zine|"
+                  r"road|drive|trip|travel|coffee|cafe|diner|roadside|laser|3d|print|maker|woodwork|fabricat|cnc|craft|workshop", re.I)
 
 
 def get(path, **params):
@@ -62,26 +81,38 @@ def discover():
         time.sleep(0.3)
 
     cutoff = datetime.now(timezone.utc) - timedelta(days=30)
-    rows = []
+    skip = {h.lstrip("@").lower() for h in json.loads((HERE / "follow.json").read_text())}
+    pool = []
     for p in profiles:
-        if p.get("labels") or not p.get("description"):
-            continue
+        text = f"{p.get('displayName', '')} {p.get('description', '')}"
         fol, posts = p.get("followersCount", 0), p.get("postsCount", 0)
+        if p.get("labels") or not p.get("description") or p["handle"].lower() in skip:
+            continue
+        if BAD.search(text) or not GOOD.search(text):
+            continue
         if not (200 <= fol <= 300_000) or posts < 50:
             continue
+        pool.append(p)
+    print(f"{len(pool)} pass the filters; checking recent activity…", file=sys.stderr)
+
+    def active(p):
         feed = get("app.bsky.feed.getAuthorFeed", actor=p["did"], limit=1, filter="posts_no_replies").get("feed", [])
         if not feed:
-            continue
+            return None
         when = feed[0]["post"]["record"].get("createdAt", "")
         try:
-            if datetime.fromisoformat(when.replace("Z", "+00:00")) < cutoff:
-                continue
+            ok = datetime.fromisoformat(when.replace("Z", "+00:00")) >= cutoff
         except ValueError:
-            continue
+            return None
+        if not ok:
+            return None
         theme, q = found[p["did"]]
         bio = " ".join(p["description"].split())[:110]
-        rows.append((theme, q, p["handle"], p.get("displayName", ""), fol, posts, bio))
-        time.sleep(0.2)
+        return (theme, q, p["handle"], p.get("displayName", ""), p.get("followersCount", 0), p.get("postsCount", 0), bio)
+
+    rows = []
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        rows = [r for r in ex.map(active, pool) if r]
 
     rows.sort(key=lambda r: (r[0], -r[4]))
     print("theme | query | handle | name | followers | posts | bio")
@@ -92,9 +123,6 @@ def discover():
 
 def follow(dry):
     handles = [h.lstrip("@").strip().lower() for h in json.loads((HERE / "follow.json").read_text())]
-    if len(handles) > MAX_FOLLOWS_PER_RUN:
-        sys.exit(f"{len(handles)} handles; max {MAX_FOLLOWS_PER_RUN} per run")
-
     session = api("com.atproto.server.createSession", {
         "identifier": os.environ["BLUESKY_HANDLE"],
         "password": os.environ["BLUESKY_APP_PASSWORD"],
@@ -120,8 +148,12 @@ def follow(dry):
         if did == me or did in already:
             print(f"  = {h}: already following, skipped")
             continue
+        if done >= MAX_FOLLOWS_PER_RUN:
+            print(f"  … {h}: over the per-run cap, left for the next run")
+            continue
         if dry:
             print(f"  + {h}: would follow")
+            done += 1
             continue
         api("com.atproto.repo.createRecord", {
             "repo": me, "collection": "app.bsky.graph.follow",
@@ -131,7 +163,7 @@ def follow(dry):
         print(f"  + {h}: followed")
         done += 1
         time.sleep(1)
-    print(f"{done} new follows" if not dry else "dry run, nothing followed")
+    print(f"{done} new follows" if not dry else f"dry run, {done} would be followed")
 
 
 if __name__ == "__main__":
