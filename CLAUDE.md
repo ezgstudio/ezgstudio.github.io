@@ -27,3 +27,11 @@ Push to `main` → GitHub Pages rebuilds automatically (live in ~1 min). That's 
 - New app landing pages should be built from the **app-landing template** in the
   `ezg-assets` repo, then committed here as a new folder.
 - Contact for the studio is ezgforge@gmail.com (already public on the site).
+
+## Social posting (Bluesky)
+- `.github/social/queue.json` — scheduled posts. A post publishes only when `"approved": true`
+  and its `at` time has passed. Images reference repo paths (must be < ~976 KB, need alt text).
+- `.github/social/post.py` — publisher; `python3 .github/social/post.py --dry-run` validates the queue.
+- `.github/workflows/social.yml` — runs hourly on `main`, posts at most one due post per run,
+  and commits the result to `.github/social/posted.json`. Never edit `posted.json` by hand.
+- Secrets live in GitHub Actions secrets (`BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`), never in the repo.
