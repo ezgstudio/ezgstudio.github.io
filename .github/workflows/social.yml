@@ -8,7 +8,7 @@ on:
       task:
         description: "What to run"
         type: choice
-        options: [posts, profile]
+        options: [posts, profile, discover, follow]
         default: posts
       dry_run:
         description: "Dry run (validate and list the queue, post nothing)"
@@ -36,8 +36,21 @@ jobs:
         working-directory: .github/social
         run: python3 profile.py ${{ inputs.dry_run && '--dry-run' || '' }}
 
+      - name: Find candidate accounts
+        if: inputs.task == 'discover'
+        working-directory: .github/social
+        run: python3 accounts.py discover
+
+      - name: Follow accounts
+        if: inputs.task == 'follow'
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+        working-directory: .github/social
+        run: python3 accounts.py follow ${{ inputs.dry_run && '--dry-run' || '' }}
+
       - name: Publish due posts
-        if: inputs.task != 'profile'
+        if: (inputs.task || 'posts') == 'posts'
         env:
           BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}

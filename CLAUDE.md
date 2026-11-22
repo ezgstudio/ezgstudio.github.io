@@ -37,3 +37,5 @@ Push to `main` → GitHub Pages rebuilds automatically (live in ~1 min). That's 
 - Secrets live in GitHub Actions secrets (`BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`), never in the repo.
 - `.github/social/profile.json` + `profile/avatar.png`, `profile/banner.png` — Bluesky profile.
   Apply with Actions → "Social posts" → Run workflow → task `profile` (untick dry run).
+- `.github/social/accounts.py` + `follow.json` — Actions task `discover` lists active accounts by topic
+  (read-only); task `follow` follows every handle in `follow.json` (max 40/run, skips existing).
