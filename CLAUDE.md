@@ -35,3 +35,5 @@ Push to `main` → GitHub Pages rebuilds automatically (live in ~1 min). That's 
 - `.github/workflows/social.yml` — runs hourly on `main`, posts at most one due post per run,
   and commits the result to `.github/social/posted.json`. Never edit `posted.json` by hand.
 - Secrets live in GitHub Actions secrets (`BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`), never in the repo.
+- `.github/social/profile.json` + `profile/avatar.png`, `profile/banner.png` — Bluesky profile.
+  Apply with Actions → "Social posts" → Run workflow → task `profile` (untick dry run).

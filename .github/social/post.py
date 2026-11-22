@@ -30,7 +30,7 @@ URL_RE = re.compile(r"https?://[^\s)]+[^\s).,!?;:'\"]")
 TAG_RE = re.compile(r"(?:^|\s)(#[A-Za-z][A-Za-z0-9_]*)")
 
 
-def api(method, body=None, token=None, raw=None, content_type="application/json"):
+def api(method, body=None, token=None, raw=None, content_type="application/json", allow_missing=False):
     data = raw if raw is not None else (json.dumps(body).encode() if body is not None else None)
     req = urllib.request.Request(f"{PDS}/{method}", data=data, method="POST" if data else "GET")
     if data is not None:
@@ -41,6 +41,8 @@ def api(method, body=None, token=None, raw=None, content_type="application/json"
         with urllib.request.urlopen(req, timeout=30) as r:
             return json.loads(r.read() or b"{}")
     except urllib.error.HTTPError as e:
+        if allow_missing and e.code == 400:
+            return None
         sys.exit(f"Bluesky {method} failed: {e.code} {e.read().decode(errors='replace')}")
 
 
