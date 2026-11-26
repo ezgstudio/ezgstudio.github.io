@@ -39,3 +39,14 @@ Push to `main` → GitHub Pages rebuilds automatically (live in ~1 min). That's 
   Apply with Actions → "Social posts" → Run workflow → task `profile` (untick dry run).
 - `.github/social/accounts.py` + `follow.json` — Actions task `discover` lists active accounts by topic
   (read-only); task `follow` follows every handle in `follow.json` (max 40/run, skips existing).
+
+## Instagram follow suggestions (routine)
+- Instagram can't be automated for following (no follow/search API; bots risk a ban), so each post day Claude
+  researches and the owner follows by hand. Goal: ~15 new, verified handles per post day.
+- Search with WebSearch (`allowed_domains: ["instagram.com"]`); only list handles that appear in results.
+  Skip anything already in `.github/social/instagram-follows.md`, political or NSFW accounts, and accounts tied
+  to a specific local area. Prefer ~1K–400K followers that look active. Themes: architecture/preservation, design/type,
+  collecting (records, books), independent bookshops/cafés, roads & places, makers, indie iOS.
+- Pace: suggest 15, not 100 — new accounts get flagged for rapid following. After the owner confirms, append the batch to
+  `instagram-follows.md`.
+- When new Instagram posts are scheduled in `queue.json`, also schedule a follow-list reminder for each post day.
