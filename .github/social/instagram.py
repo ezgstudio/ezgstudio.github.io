@@ -35,8 +35,18 @@ def call(host, path, params=None, method="GET"):
             return e.code, {"error": {"message": "unparseable error body"}}
 
 
+def account_id():
+    """Account ID is an identifier, not a credential: env var wins, else instagram.json."""
+    val = os.environ.get("INSTAGRAM_ACCOUNT_ID", "").strip()
+    if val:
+        return val
+    from pathlib import Path
+    cfg = Path(__file__).resolve().parent / "instagram.json"
+    return json.loads(cfg.read_text())["account_id"].strip() if cfg.exists() else ""
+
+
 def check():
-    acct = os.environ["INSTAGRAM_ACCOUNT_ID"].strip()
+    acct = account_id()
     tok = os.environ["INSTAGRAM_TOKEN"].strip()
     print(f"token length: {len(tok)} chars · account id: {acct}")
     ok = False
