@@ -104,9 +104,10 @@ def load():
 def test():
     uid = me()["id"]
     queue, posted = load()
-    cand = [p for p in queue if p.get("threads", {}).get("approved") and f"threads:{p['id']}" not in posted]
+    # A test only builds a container and never publishes, so it may use a not-yet-approved draft.
+    cand = [p for p in queue if "threads" in p and f"threads:{p['id']}" not in posted]
     if not cand:
-        die("no approved, unposted Threads posts in the queue")
+        die("no unposted Threads posts in the queue")
     post = sorted(cand, key=lambda p: p["threads"]["at"])[0]
     print(f"testing with '{post['id']}' (scheduled {post['threads']['at']}); this will NOT publish")
     cid = make_container(uid, post)
