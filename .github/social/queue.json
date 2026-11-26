@@ -20,7 +20,7 @@
       "text": "EZG Studio is an independent studio working at the intersection of software and fabrication. Native iOS apps, laser-cut and 3D-printed objects, digital design assets. Situ and Folio are on the App Store.\n\nezgstudio.github.io",
       "image": "assets/social/ig-intro.jpg",
       "at": "2026-11-26T12:00:00-05:00",
-      "approved": false
+      "approved": true
     }
   },
   {
@@ -46,7 +46,7 @@
       "text": "Situ is a field guide to the built world: 1,000+ architectural landmarks on a map, each with its architect, year, style and the story behind the façade.\n\nNo account. No ads. No tracking.\n\nhttps://apps.apple.com/us/app/situ-architecture-map/id6829291538\n\n#architecture",
       "image": "assets/social/ig-situ-intro.jpg",
       "at": "2026-11-28T12:00:00-05:00",
-      "approved": false
+      "approved": true
     }
   },
   {
@@ -72,7 +72,7 @@
       "text": "Record Store Day Black Friday. Whatever you bring home today, Folio gives it a proper place on the shelf: catalog records, track condition and value, and keep a wishlist of what you're still hunting.\n\nhttps://apps.apple.com/us/app/folio-collection-tracker/id6811679127\n\n#vinyl",
       "image": "assets/social/ig-folio-rsd.jpg",
       "at": "2026-11-27T10:00:00-05:00",
-      "approved": false
+      "approved": true
     }
   },
   {
@@ -98,7 +98,7 @@
       "text": "Your collection deserves better than a spreadsheet. Folio has six hand-crafted themes: Brutalist, Cartoon, Glass, Illustrative, Neumorphic and Riso. Each one restyles the whole app, down to the icon.\n\nhttps://apps.apple.com/us/app/folio-collection-tracker/id6811679127",
       "image": "assets/social/ig-folio-themes.jpg",
       "at": "2026-11-30T12:00:00-05:00",
-      "approved": false
+      "approved": true
     }
   },
   {
@@ -124,7 +124,7 @@
       "text": "Every site in Situ is a category pin, from row houses to memorials. Tap one and it reads like a museum label for the building in front of you.\n\nhttps://apps.apple.com/us/app/situ-architecture-map/id6829291538\n\n#architecture",
       "image": "assets/social/ig-situ-map.jpg",
       "at": "2026-12-02T12:00:00-05:00",
-      "approved": false
+      "approved": true
     }
   },
   {
@@ -147,7 +147,7 @@
       "text": "Coming soon: Fora, a guide to the drives worth taking slowly and the third places worth stopping for. Cafés, bookshops, farm stands, record shops and diners along the way.\n\nThe long way is the point.",
       "image": "assets/social/ig-fora.jpg",
       "at": "2026-12-04T12:00:00-05:00",
-      "approved": false
+      "approved": true
     }
   }
 ]
