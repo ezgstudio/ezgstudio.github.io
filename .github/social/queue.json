@@ -9,6 +9,12 @@
       "title": "EZG Studio",
       "description": "Native iOS apps, laser-cut and 3D-printed objects, and digital design assets.",
       "thumb": "assets/icon-512.png"
+    },
+    "instagram": {
+      "image": "assets/social/ig-intro.jpg",
+      "at": "2026-11-26T12:00:00-05:00",
+      "approved": false,
+      "caption": "EZG Studio is an independent studio working at the intersection of software and fabrication.\n\nNative iOS apps. Laser-cut and 3D-printed objects. Digital design assets.\n\nSitu and Folio are on the App Store now. Link in bio.\n\n#indiedev #iosapps #designstudio"
     }
   },
   {
@@ -23,7 +29,13 @@
         "width": 1200,
         "height": 800
       }
-    ]
+    ],
+    "instagram": {
+      "image": "assets/social/ig-situ-intro.jpg",
+      "at": "2026-11-28T12:00:00-05:00",
+      "approved": false,
+      "caption": "Situ is a field guide to the built world.\n\n1,000+ architectural landmarks on a map, each with its architect, year, style and the story behind the façade. Tap a pin, read the label, and keep a list of the places you love.\n\nNo account. No ads. No tracking.\n\nOn the App Store. Link in bio.\n\n#architecture #architecturelovers #iosapp"
+    }
   },
   {
     "id": "folio-record-store-day",
@@ -37,7 +49,13 @@
         "width": 2000,
         "height": 1125
       }
-    ]
+    ],
+    "instagram": {
+      "image": "assets/social/ig-folio-rsd.jpg",
+      "at": "2026-11-27T10:00:00-05:00",
+      "approved": false,
+      "caption": "Record Store Day Black Friday. Whatever you bring home today, Folio gives it a proper place on the shelf.\n\nCatalog your records, track condition and value, and keep a wishlist of what you're still hunting. Books, cards, figures and sneakers too.\n\nOn the App Store. Link in bio.\n\n#recordstoreday #vinylcollection #vinyl #iosapp"
+    }
   },
   {
     "id": "folio-themes",
@@ -51,7 +69,13 @@
         "width": 924,
         "height": 2000
       }
-    ]
+    ],
+    "instagram": {
+      "image": "assets/social/ig-folio-themes.jpg",
+      "at": "2026-11-30T12:00:00-05:00",
+      "approved": false,
+      "caption": "Your collection deserves better than a spreadsheet.\n\nFolio has six hand-crafted themes: Brutalist, Cartoon, Glass, Illustrative, Neumorphic and Riso. Each one restyles the whole app, down to the icon.\n\nOn the App Store. Link in bio.\n\n#collector #appdesign #iosapp"
+    }
   },
   {
     "id": "situ-map",
@@ -65,7 +89,13 @@
         "width": 560,
         "height": 1216
       }
-    ]
+    ],
+    "instagram": {
+      "image": "assets/social/ig-situ-map.jpg",
+      "at": "2026-12-02T12:00:00-05:00",
+      "approved": false,
+      "caption": "Every site in Situ is a category pin, from row houses to memorials. Tap one and it reads like a museum label for the building in front of you.\n\nSitu is on the App Store. Link in bio.\n\n#architecture #urbanism #design"
+    }
   },
   {
     "id": "fora-teaser",
@@ -76,6 +106,12 @@
       "uri": "https://ezgstudio.github.io/fora/",
       "title": "Fora — Take the long way",
       "description": "Scenic drives and third places, coming to iOS."
+    },
+    "instagram": {
+      "image": "assets/social/ig-fora.jpg",
+      "at": "2026-12-04T12:00:00-05:00",
+      "approved": false,
+      "caption": "Coming soon: Fora.\n\nA guide to the drives worth taking slowly and the third places worth stopping for: cafés, bookshops, farm stands, record shops and diners along the way.\n\nThe long way is the point.\n\n#roadtrip #scenicdrive #thirdplace"
     }
   }
 ]
