@@ -49,4 +49,10 @@ Push to `main` → GitHub Pages rebuilds automatically (live in ~1 min). That's 
   collecting (records, books), independent bookshops/cafés, roads & places, makers, indie iOS.
 - Pace: suggest 15, not 100 — new accounts get flagged for rapid following. After the owner confirms, append the batch to
   `instagram-follows.md`.
+- Threads has no follow API either. Threads usernames match Instagram's, so the same handles usually work there
+  (not every account has Threads). Mention this when posting each batch.
 - When new Instagram posts are scheduled in `queue.json`, also schedule a follow-list reminder for each post day.
+
+## Threads
+- `.github/social/threads.py` — publisher (`check`, `test`, `publish`); secret `THREADS_TOKEN`. Queue entries carry a `threads`
+  block (text ≤ 500 chars, optional image, `at`, `approved`). Actions tasks: `threads-check`, `threads-test` (never publishes).
