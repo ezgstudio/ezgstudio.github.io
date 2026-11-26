@@ -8,7 +8,7 @@ on:
       task:
         description: "What to run"
         type: choice
-        options: [posts, profile, discover, follow, instagram-check, instagram-test, instagram-publish]
+        options: [posts, profile, discover, follow, instagram-check, instagram-test, instagram-publish, threads-check, threads-test, threads-publish]
         default: posts
       dry_run:
         description: "Dry run (validate and list the queue, post nothing)"
@@ -64,6 +64,13 @@ jobs:
         working-directory: .github/social
         run: python3 instagram.py test
 
+      - name: Check / test Threads
+        if: inputs.task == 'threads-check' || inputs.task == 'threads-test'
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+        working-directory: .github/social
+        run: python3 threads.py ${{ inputs.task == 'threads-check' && 'check' || 'test' }}
+
       - name: Publish due posts
         if: (inputs.task || 'posts') == 'posts'
         env:
@@ -83,6 +90,14 @@ jobs:
           INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
         working-directory: .github/social
         run: python3 instagram.py publish ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Publish due Threads posts
+        if: (inputs.task || 'posts') == 'posts' || inputs.task == 'threads-publish'
+        continue-on-error: true
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+        working-directory: .github/social
+        run: python3 threads.py publish ${{ inputs.dry_run && '--dry-run' || '' }}
 
       - name: Record what was posted
         if: ${{ !cancelled() }}
