@@ -8,7 +8,7 @@ on:
       task:
         description: "What to run"
         type: choice
-        options: [posts, profile, discover, follow]
+        options: [posts, profile, discover, follow, instagram-check]
         default: posts
       dry_run:
         description: "Dry run (validate and list the queue, post nothing)"
@@ -48,6 +48,14 @@ jobs:
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
         working-directory: .github/social
         run: python3 accounts.py follow ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Check Instagram connection
+        if: inputs.task == 'instagram-check'
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+        working-directory: .github/social
+        run: python3 instagram.py check
 
       - name: Publish due posts
         if: (inputs.task || 'posts') == 'posts'
