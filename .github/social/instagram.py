@@ -51,7 +51,7 @@ def check():
     print(f"token length: {len(tok)} chars · account id: {acct}")
     ok = False
     for host in HOSTS:
-        status, body = call(host, acct, {"fields": "id,username,account_type"})
+        status, body = call(host, acct, {"fields": "id,username"})
         err = body.get("error", {})
         print(f"{host} → HTTP {status}: " + (f"{err.get('message')} (code {err.get('code')})" if err else json.dumps(body)))
         ok = ok or (status == 200 and "username" in body)
