@@ -63,16 +63,20 @@
       }
     ],
     "instagram": {
-      "image": "assets/social/ig-folio-rsd.jpg",
+      "image": "assets/social/ig-folio-shelf.jpg",
       "at": "2026-11-27T10:00:00-05:00",
       "approved": true,
-      "caption": "Record Store Day Black Friday. Whatever you bring home today, Folio gives it a proper place on the shelf.\n\nCatalog your records, track condition and value, and keep a wishlist of what you're still hunting. Books, cards, figures and sneakers too.\n\nOn the App Store. Link in bio.\n\n#recordstoreday #vinylcollection #vinyl #iosapp"
+      "caption": "Every record deserves a proper place on the shelf.\n\nFolio catalogs your vinyl, books, cards and more. Log condition and value, and keep a wishlist of what you're still hunting.\n\nOn the App Store. Link in bio.\n\n#vinyl #vinylcollection #collector #iosapp"
     },
     "threads": {
-      "text": "Record Store Day Black Friday. Whatever you bring home today, Folio gives it a proper place on the shelf: catalog records, track condition and value, and keep a wishlist of what you're still hunting.\n\nhttps://apps.apple.com/us/app/folio-collection-tracker/id6811679127\n\n#vinyl",
-      "image": "assets/social/ig-folio-rsd.jpg",
+      "text": "Every record deserves a proper place on the shelf. Folio catalogs your vinyl, books, cards and more: log condition and value, and keep a wishlist of what you're still hunting.\n\nhttps://apps.apple.com/us/app/folio-collection-tracker/id6811679127\n\n#vinyl",
+      "image": "assets/social/ig-folio-shelf.jpg",
       "at": "2026-11-27T10:00:00-05:00",
       "approved": true
+    },
+    "design": {
+      "brief": "Folio palette. Eyebrow \"FOLIO · YOUR SHELF\". Headline \"Every record deserves a proper place on the shelf.\" Vinyl Records screen (folio/assets/hero-grid.webp).",
+      "note": "Bluesky already published the Record Store Day wording on 2026-11-27; Instagram and Threads use this neutral version."
     }
   },
   {
@@ -436,6 +440,36 @@
       "needs_new_screenshot": false,
       "screenshot": "type only",
       "fallback": null
+    }
+  },
+  {
+    "id": "folio-record-store-day-2027",
+    "at": "2027-04-17T10:00:00-04:00",
+    "approved": false,
+    "text": "Record Store Day. Whatever you bring home today, Folio gives it a proper place on the shelf: catalog records, track condition and value, and keep a wishlist of what you're still hunting.\n\nhttps://apps.apple.com/us/app/folio-collection-tracker/id6811679127\n\n#vinyl",
+    "images": [
+      {
+        "path": "assets/social/ig-folio-rsd-2027.jpg",
+        "alt": "Folio's Vinyl Records screen, with a Record Store Day headline about giving whatever you bring home a proper place on the shelf.",
+        "width": 1080,
+        "height": 1350
+      }
+    ],
+    "instagram": {
+      "image": "assets/social/ig-folio-rsd-2027.jpg",
+      "at": "2027-04-17T10:00:00-04:00",
+      "approved": false,
+      "caption": "Record Store Day. Whatever you bring home today, Folio gives it a proper place on the shelf.\n\nCatalog your records, track condition and value, and keep a wishlist of what you're still hunting. Books, cards, figures and sneakers too.\n\nOn the App Store. Link in bio.\n\n#recordstoreday #vinylcollection #vinyl #iosapp"
+    },
+    "threads": {
+      "text": "Record Store Day. Whatever you bring home today, Folio gives it a proper place on the shelf: catalog records, track condition and value, and keep a wishlist of what you're still hunting.\n\nhttps://apps.apple.com/us/app/folio-collection-tracker/id6811679127\n\n#vinyl",
+      "image": "assets/social/ig-folio-rsd-2027.jpg",
+      "at": "2027-04-17T10:00:00-04:00",
+      "approved": false
+    },
+    "design": {
+      "brief": "Same layout as the Black Friday card, eyebrow \"RECORD STORE DAY\".",
+      "note": "DATE TO CONFIRM: set to the third Saturday of April 2027 (Apr 17); check the official Record Store Day 2027 date before approving."
     }
   }
 ]
