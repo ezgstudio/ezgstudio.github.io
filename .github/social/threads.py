@@ -114,7 +114,13 @@ def test():
     print(f"OK: Threads accepted the post. Container {cid} is FINISHED and will expire unused.")
 
 
+PAUSED = QUEUE.parent / "threads.paused"
+
+
 def publish(dry):
+    if PAUSED.exists():
+        print("Threads publishing is paused (delete .github/social/threads.paused to resume)")
+        return
     now = datetime.now(timezone.utc)
     queue, posted = load()
     due = sorted(

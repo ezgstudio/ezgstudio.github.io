@@ -56,3 +56,5 @@ Push to `main` → GitHub Pages rebuilds automatically (live in ~1 min). That's 
 ## Threads
 - `.github/social/threads.py` — publisher (`check`, `test`, `publish`); secret `THREADS_TOKEN`. Queue entries carry a `threads`
   block (text ≤ 500 chars, optional image, `at`, `approved`). Actions tasks: `threads-check`, `threads-test` (never publishes).
+- **Paused (2026-11-27):** the Threads account was disabled by Meta. `.github/social/threads.paused` makes `threads.py publish`
+  a no-op; delete that file to resume. Threads queue entries keep their approvals. Skip Threads when suggesting follows.
