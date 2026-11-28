@@ -173,10 +173,18 @@
     },
     "design": {
       "brief": "Folio palette (#F4E7D3 bg, #B8452C accent, Playfair Display). Eyebrow \"FOLIO · THE WISHLIST\". Headline \"One away from a full set.\" with \"a full set\" in the accent.",
-      "needs_new_screenshot": true,
-      "screenshot": "NEW: a Folio wishlist screenshot",
-      "fallback": "folio/assets/shot-catalog.webp (shelf dashboard with set progress)"
-    }
+      "needs_new_screenshot": false,
+      "screenshot": "folio/assets/shot-collections.webp (Vinyl Records, set progress + wishlist filter; a dedicated wishlist screenshot would be better but is optional)",
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-folio-wishlist.jpg",
+        "alt": "Folio's Vinyl Records screen showing set progress and a wishlist, under the headline 'One away from a full set.'",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "situ-label",
@@ -198,9 +206,17 @@
     "design": {
       "brief": "Situ palette (#F4F2EE bg, #D9531E accent, Inter 800). Eyebrow \"SITU · THE LABEL\". Headline \"Every building has a story.\" with \"a story\" in the accent. Laid out like the Situ map card.",
       "needs_new_screenshot": false,
-      "screenshot": "situ/assets/shot-detail.webp (already in repo)",
-      "fallback": null
-    }
+      "screenshot": "situ/assets/shot-detail.webp",
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-situ-label.jpg",
+        "alt": "Situ's detail screen for Grand Central Terminal with its architect, year and style, under the headline 'Every building has a story.'",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "folio-value",
@@ -222,9 +238,17 @@
     "design": {
       "brief": "Folio palette. Eyebrow \"FOLIO · WHAT IT'S WORTH\". Headline \"The whole shelf, added up.\" with \"added up\" in the accent.",
       "needs_new_screenshot": false,
-      "screenshot": "folio/assets/shot-vault.webp (already in repo: totals and estimated value, sample data)",
-      "fallback": null
-    }
+      "screenshot": "folio/assets/shot-vault.webp",
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-folio-value.jpg",
+        "alt": "Folio's vault screen showing totals and estimated value across collections, under the headline 'The whole shelf, added up.'",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "situ-contribute",
@@ -245,10 +269,18 @@
     },
     "design": {
       "brief": "Situ palette. Eyebrow \"SITU · HELP BUILD THE MAP\". Headline \"Know a building we're missing?\" with \"we're missing\" in the accent.",
-      "needs_new_screenshot": true,
-      "screenshot": "NEW: Situ's submit / flag-a-correction screen",
-      "fallback": null
-    }
+      "needs_new_screenshot": false,
+      "screenshot": "type-only placeholder; swap in a real submit/flag screenshot if you take one",
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-situ-contribute.jpg",
+        "alt": "Text card: 'Know a building we're missing?' Situ lets you submit a landmark or flag a correction from the app.",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "folio-events",
@@ -270,9 +302,17 @@
     "design": {
       "brief": "Folio palette. Eyebrow \"FOLIO · NIGHTS OUT\". Headline \"Never forget a night out.\" with \"a night out\" in the accent. Optional real ticket stub behind the phone.",
       "needs_new_screenshot": false,
-      "screenshot": "folio/assets/shot-nights.webp (already in repo)",
-      "fallback": null
-    }
+      "screenshot": "folio/assets/shot-nights.webp",
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-folio-events.jpg",
+        "alt": "Folio's Nights Out screen listing concerts, plays and films, under the headline 'Never forget a night out.'",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "fora-third-places",
@@ -295,8 +335,16 @@
       "brief": "Fora card style (#111318 bg, topo contours, #F07C20 accent, Archivo Narrow). Eyebrow \"FORA\". Headline \"The third place.\" over two lines, orange full stop. Sub \"Not home. Not work. The places worth stopping for.\" Footer \"COMING SOON TO IOS\".",
       "needs_new_screenshot": false,
       "screenshot": "type only",
-      "fallback": null
-    }
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-fora-third-places.jpg",
+        "alt": "Fora card with topographic lines: 'The third place. Not home. Not work. The places worth stopping for.' Coming soon to iOS.",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "situ-nearby",
@@ -318,9 +366,17 @@
     "design": {
       "brief": "Situ palette. Eyebrow \"SITU · NEARBY\". Headline \"Wherever you land, look up.\" with \"look up\" in the accent.",
       "needs_new_screenshot": false,
-      "screenshot": "situ/assets/shot-explore.webp (already in repo: search and distances)",
-      "fallback": null
-    }
+      "screenshot": "situ/assets/shot-explore.webp",
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-situ-nearby.jpg",
+        "alt": "Situ's Explore screen listing landmarks with distances, under the headline 'Wherever you land, look up.'",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "folio-your-data",
@@ -343,8 +399,16 @@
       "brief": "Folio palette, type only. Eyebrow \"FOLIO · YOUR DATA\". Headline \"No ads. No tracking. No lock-in.\" with \"No lock-in.\" in the accent. Bottom labels: PDF · CSV · JSON.",
       "needs_new_screenshot": false,
       "screenshot": "type only",
-      "fallback": null
-    }
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-folio-your-data.jpg",
+        "alt": "Text card: 'No ads. No tracking. No lock-in.' with the labels PDF, CSV and JSON.",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "situ-visited",
@@ -366,9 +430,17 @@
     "design": {
       "brief": "Situ palette. Eyebrow \"SITU · VISITED\". Headline \"Walk off the holiday.\" with \"the holiday\" in the accent.",
       "needs_new_screenshot": false,
-      "screenshot": "situ/assets/shot-saved.webp (already in repo: Favorites and Visited)",
-      "fallback": null
-    }
+      "screenshot": "situ/assets/shot-saved.webp",
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-situ-visited.jpg",
+        "alt": "Situ's Favorites screen showing saved landmarks, under the headline 'Walk off the holiday.'",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "folio-new-additions",
@@ -389,10 +461,18 @@
     },
     "design": {
       "brief": "Folio palette. Eyebrow \"FOLIO · NEW ADDITIONS\". Headline \"Shelf it before the wrapping's gone.\" with \"the wrapping's gone\" in the accent.",
-      "needs_new_screenshot": true,
-      "screenshot": "NEW (optional): the add-item screen mid-scan",
-      "fallback": "folio/assets/hero-grid.webp (already in repo)"
-    }
+      "needs_new_screenshot": false,
+      "screenshot": "folio/assets/shot-catalog.webp (shelf dashboard; an add-item/scan screenshot is optional)",
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-folio-new-additions.jpg",
+        "alt": "Folio's shelf dashboard with collections, under the headline 'Shelf it before the wrapping's gone.'",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "studio-year-end",
@@ -415,8 +495,16 @@
       "brief": "Studio intro style (#1A1B18 bg, EZG lockup, #D6A63A rule). Tag line \"THANK YOU · 2026\". List under it: \"Situ · Folio · Fora, next\".",
       "needs_new_screenshot": false,
       "screenshot": "type only",
-      "fallback": null
-    }
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-studio-year-end.jpg",
+        "alt": "EZG Studio logo on a dark background: 'Thank you, 2026. Situ, Folio, Fora next.'",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "fora-new-year",
@@ -439,8 +527,16 @@
       "brief": "Fora card style. Eyebrow \"FORA · 2027\". Headline \"New year, new roads.\" over two lines, orange full stop. Footer \"COMING SOON TO IOS\".",
       "needs_new_screenshot": false,
       "screenshot": "type only",
-      "fallback": null
-    }
+      "card": "rendered"
+    },
+    "images": [
+      {
+        "path": "assets/social/ig-fora-new-year.jpg",
+        "alt": "Fora card with topographic lines: 'New year, new roads.' Coming soon to iOS.",
+        "width": 1080,
+        "height": 1350
+      }
+    ]
   },
   {
     "id": "folio-record-store-day-2027",
